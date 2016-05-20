@@ -1,7 +1,18 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Copyright (C) 2016 Czégényi Roland
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 package cr.memorygame.view;
 
@@ -63,25 +74,18 @@ public class GameViewController extends ViewController {
     
      int talalat_szama = 0;
                 int teves_talalat = 0;
-    //BASSZA MEG ABSOLUTE IZE KELL NEKI FEL NAP ERRE A SZARRA... ES AKKOR MENNI FOG, DE OSZYTALYBETOLTOVEL WTF LEHET ILYET DE JO OKOS VOK, H ERRE RAJOTTEM, DEBUG 4EVER
-    // public     KepEleres kep = new KepEleres(kepeleres);//osszerakosdival mukodhet a dolog, de h hogyan passz
-    private Image backSide = new Image(this.getClass().getResourceAsStream("/bg.jpg"));
-    //public KepEleres kep = new KepEleres("/img/");
+                private Image backSide = new Image(this.getClass().getResourceAsStream("/bg.jpg"));
 
     @Override
     public void setGameController(GameController game) {
         this.game = game;
         game.setView(this);
 
-        /// osztalybetoltos vmi kellene
         adatok();
         felulet();
 
     }
 
-    /*public void initialize() {
-     }*/
-    // KepEleres kepek = new KepEleres(kepeleres);
     public String adatok() {
 
         jneve.setText(game.getPlayer().getName());
@@ -117,7 +121,6 @@ public class GameViewController extends ViewController {
         System.out.println(game.getKepEleres().getEleres() + "/");
 
         jatek = new Builder(kep, 10).GameBuilder();
-        ///////////////////itt hagytam abba, felso sor lehet, hogy mashogy kell+ fieleleres jobb vmi kell
 
         createImageViews(20);
         talalat = new Talalat();
@@ -133,7 +136,6 @@ public class GameViewController extends ViewController {
             imageView.setFitHeight(100);
             imageView.setEffect(new DropShadow(5, Color.BLACK));
 
-            /* attaching a handler is essential */
             imageView.addEventHandler(MouseEvent.MOUSE_CLICKED, imageViewClickEventHandler);
             pane.add(imageView, rowIndex, colIndex);
             rowIndex++;
