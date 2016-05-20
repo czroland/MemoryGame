@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Font?>
+
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import java.util.*?>
+<?import javafx.collections.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="259.0" prefWidth="447.0" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cr.memorygame.view.LoginViewController">
+    <children>
+        <Button fx:id="button" alignment="CENTER" layoutX="168.0" layoutY="219.0" onAction="#check" prefHeight="26.0" prefWidth="112.0" text="Start" textAlignment="CENTER" />
+        <Label fx:id="label" layoutX="22.0" layoutY="62.0" minHeight="16" minWidth="69" text="Játékos neve:" />
+      <TextField fx:id="name" layoutX="146.0" layoutY="55.0" prefHeight="26.0" prefWidth="199.0" stylesheets="@../styles/Styles.css" />
+      <Label layoutX="22.0" layoutY="108.0" text="Játék nehézsége:" />
+      
+      <HBox layoutX="147.0" layoutY="104.0" prefHeight="26.0" prefWidth="258.0">
+         <children>
+            <RadioButton fx:id="konnyu" mnemonicParsing="false" prefHeight="18.0" prefWidth="87.0" text="Könnyű">
+               <toggleGroup>
+                  <ToggleGroup fx:id="nehezsegtoggle" />
+               </toggleGroup></RadioButton>
+            <RadioButton fx:id="kozepes" mnemonicParsing="false" prefHeight="18.0" prefWidth="90.0" selected="true" text="Közepes" toggleGroup="$nehezsegtoggle" />
+            <RadioButton fx:id="nehez" mnemonicParsing="false" prefHeight="18.0" prefWidth="87.0" text="Nehéz" toggleGroup="$nehezsegtoggle" />
+         </children>
+      </HBox>
+      
+      
+      <Label layoutX="138.0" layoutY="18.0" text="Üdvözöllek a játékban">
+         <font>
+            <Font size="17.0" />
+         </font>
+      </Label>
+      <Label layoutX="22.0" layoutY="150.0" text="Téma:" />
+      <Label fx:id="nev_hiba" layoutX="353.0" layoutY="60.0" />
+      <ComboBox fx:id="valaszt" layoutX="144.0" layoutY="145.0" prefHeight="26.0" prefWidth="155.0" >
+    <items>
+        <FXCollections fx:factory="observableArrayList">
+          <String fx:value="Állat" />
+          <String fx:value="Gyümölcs" />
+          <String fx:value="Virág" />
+        </FXCollections>
+      </items>
+       <value>
+        <String fx:value="Állat" />
+    </value>
+      </ComboBox>
+
+    </children>
+</AnchorPane>
