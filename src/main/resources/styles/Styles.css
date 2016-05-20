@@ -1,0 +1,11 @@
+.button {
+    -fx-font-weight: bold;
+}
+.wrong_user {
+	-fx-text-box-border: red;
+	-fx-focus-color: red;
+}
+
+.wrong_user:focused {
+	-fx-focus-color: red;
+}

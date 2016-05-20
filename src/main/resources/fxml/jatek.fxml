@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+
+<AnchorPane fx:id="ap" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="550.0" prefWidth="741.0" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cr.memorygame.view.GameViewController">
+   <children>
+      <Label layoutX="477.0" layoutY="33.0" text="Játékos neve:" />
+      <Label fx:id="jneve" layoutX="593.0" layoutY="33.0" prefHeight="16.0" prefWidth="76.0" />
+      <Label layoutX="476.0" layoutY="57.0" text="Téma:" />
+      <Label fx:id="tema_neve" layoutX="593.0" layoutY="58.0" prefHeight="16.0" prefWidth="88.0" />
+      <Label layoutX="476.0" layoutY="81.0" text="Nehézség:" />
+      <Label fx:id="nehezseg_neve" layoutX="593.0" layoutY="81.0" prefHeight="16.0" prefWidth="76.0" />
+      <GridPane fx:id="pane" layoutX="13.0" layoutY="30.0" prefHeight="496.0" prefWidth="444.0">
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+      </GridPane>
+      <Label layoutX="476.0" layoutY="107.0" text="Helyes tippek:" />
+      <Label fx:id="ht" layoutX="593.0" layoutY="107.0" prefHeight="16.0" prefWidth="88.0" />
+      <Label layoutX="476.0" layoutY="135.0" text="Helytelen tippek:" />
+      <Label fx:id="nht" layoutX="593.0" layoutY="135.0" prefHeight="16.0" prefWidth="56.0" />
+   </children>
+</AnchorPane>
