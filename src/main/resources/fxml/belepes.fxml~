@@ -19,7 +19,7 @@
     <children>
         <Button fx:id="button" alignment="CENTER" layoutX="168.0" layoutY="219.0" onAction="#check" prefHeight="26.0" prefWidth="112.0" text="Start" textAlignment="CENTER" />
         <Label fx:id="label" layoutX="22.0" layoutY="62.0" minHeight="16" minWidth="69" text="Játékos neve:" />
-      <TextField fx:id="name" layoutX="146.0" layoutY="55.0" prefHeight="26.0" prefWidth="199.0" />
+      <TextField fx:id="name" layoutX="146.0" layoutY="55.0" prefHeight="26.0" prefWidth="199.0" stylesheets="@../styles/Styles.css" />
       <Label layoutX="22.0" layoutY="108.0" text="Játék nehézsége:" />
       
       <HBox layoutX="147.0" layoutY="104.0" prefHeight="26.0" prefWidth="258.0">

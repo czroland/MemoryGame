@@ -15,6 +15,8 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 package cr.memorygame;
+import static cr.memorygame.view.Main.logger;
+
 
 /**
  * Ez az osztály állítja be a játék paramétereit.
@@ -31,6 +33,10 @@ public class Builder {
     public Builder(KepEleres kepeleres, int parok_szama) {
         this.kepeleres = kepeleres;
         this.parok_szama = parok_szama;
+        logger.info(kepeleres.getEleres()+"/ képelérési mappa");
+        logger.info(parok_szama+" pár kép inicializálva");
+
+        
     }
 
     
@@ -51,8 +57,10 @@ public class Builder {
  * @return Jatek a megadott paraméterekkel
  */
     public Jatek GameBuilder()
-    {
+    {            logger.info("Új játék létrehozva");
+
     return new Jatek(this.kepeleres,this.parok_szama);
+
     }
     
     

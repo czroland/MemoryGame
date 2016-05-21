@@ -1,7 +1,18 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Copyright (C) 2016 Czégényi Roland
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 package cr.memorygame.view;
 
@@ -53,12 +64,10 @@ public class LoginViewController extends ViewController {
     @FXML
     private void check() {
         if (name.getText().length() < 3) {
-            name.getStyleClass().add("wrong_user");
             nev_hiba.setText("Túl rövid név!");
         } else {
-            boolean foglalt_e = game.joeaNev(name.getText());
+            boolean foglalt_e = game.check(name.getText());
             if (foglalt_e) {
-                name.getStyleClass().add("wrong_user");
                 nev_hiba.setText("A név foglalt!");
             } else {
                 Nehezseg nehezseg = Nehezseg.Közepes;

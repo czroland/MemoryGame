@@ -61,7 +61,7 @@ public class GameController {
      * @param name - ellenőrzi, hogy a játékos neve szerepe-e már az
      * adatbázisba, megfelelő számú karakterből áll-e.
      */
-    public boolean check(String name) {
+    public boolean joeaNev(String name) {
         logger.info(name + " név ellenőrzése");
 
         ArrayList<String> names = new RekordLista().getNames();

@@ -27,12 +27,17 @@ import javafx.scene.layout.BorderPane;
 import javafx.stage.WindowEvent;
 
 import cr.memorygame.GameController;
+import javafx.application.Platform;
 import javafx.scene.layout.AnchorPane;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class Main extends Application {
 
     private Stage primaryStage;
     private GameController game;
+     public static Logger logger = LoggerFactory.getLogger(Main.class);
 
     @Override
     public void start(Stage primaryStage) {
@@ -59,10 +64,12 @@ public class Main extends Application {
             primaryStage.setResizable(false);
             primaryStage.centerOnScreen();
             primaryStage.show();
-            /*logger.info("Login screen set up and shown.");
-             primaryStage.setOnCloseRequest((WindowEvent e)-> {
-             logger.info("Quit.");
-             });*/
+            logger.info("Bejelentkezési felület.");
+            primaryStage.setOnCloseRequest((WindowEvent e)-> {
+            	logger.info("Kilépés.");
+            });
+             
+   
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -85,12 +92,14 @@ public class Main extends Application {
             primaryStage.setScene(scene);
             primaryStage.setResizable(false);
             primaryStage.centerOnScreen();
+
             primaryStage.show();
-           //System.out.println(game.getPlayer().getName());
-            /*logger.info("Login screen set up and shown.");
-             primaryStage.setOnCloseRequest((WindowEvent e)-> {
-             logger.info("Quit.");
-             });*/
+            logger.info("Játékfelület.");
+            
+            primaryStage.setOnCloseRequest((WindowEvent e)-> {
+            	logger.info("Kilépés.");
+            });
+             
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -106,6 +115,7 @@ public class Main extends Application {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
+        logger.info("A program elindult.");
         launch(args);
     }
 

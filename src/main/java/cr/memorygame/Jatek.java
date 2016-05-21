@@ -16,6 +16,7 @@
  */
 package cr.memorygame;
 
+import static cr.memorygame.view.Main.logger;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
@@ -36,7 +37,6 @@ public final class Jatek {
  * @param parok_szama - a játékban használt képek száma.
  */
     public Jatek(KepEleres kep, int parok_szama) {
-        System.out.print("lapokletrehozasa jatekban");
         lapokLetrehozasa(kep, parok_szama);
     }
 /**
@@ -55,11 +55,12 @@ public final class Jatek {
         int parok = 0;
 
         for (int i = 1; i < 11; i++) {
+                    logger.info(kep.getEleres() + "/" + i + ".jpg lap hozzáadása a listához");
+
             lapok.add(kep.getEleres() + "/" + i + ".jpg");
             lapok.add(kep.getEleres() + "/" + i + ".jpg");
             parok++;
-            //System.out.println(parok);
-            // System.out.println(lapok.get(i) +i+"lap");
+           
             if (parok == parok_szama) {
                 break;
             }
@@ -67,7 +68,6 @@ public final class Jatek {
         }
 
         Collections.shuffle(lapok);
-        System.out.println(parok);
     }
 
 /**
@@ -82,9 +82,8 @@ public final class Jatek {
         }
         for (int i = 0; i < 20; i++) {
             if (lapok.get(i).equals(talalat.elsoKep) && lapok.get(i).equals(talalat.masodikKep)) {
-                System.out.print(lapok.get(i) + "-----");
-                System.out.print(talalat.elsoKep + "------");
-                System.out.println(talalat.masodikKep);
+                
+
 
                 a = true;
             }

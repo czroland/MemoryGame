@@ -17,6 +17,7 @@
 package cr.memorygame;
 
 import cr.memorygame.view.GameViewController;
+import static cr.memorygame.view.Main.logger;
 
 /**
  *
@@ -41,7 +42,12 @@ public class Player {
         this.nehezseg = ((nehezseg != null) ? nehezseg : Nehezseg.Közepes);
         this.tema = ((tema != null) ? tema : Temak.allat);
         this.name = name;
-        this.temaeleres = temaeleres;
+        
+        logger.info(name+" játékos létrehozva");
+        logger.info(nehezseg+" nehézségi fokozat beallitva");
+                logger.info(tema+" választott téma beállitva");
+
+
 
        
     }

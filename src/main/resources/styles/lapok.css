@@ -1,0 +1,69 @@
+
+
+.titlepane {
+	-fx-background-color: black;
+}
+
+
+
+.tile {
+	-fx-padding: 0;
+	-fx-focus-traversable: true;
+}
+
+
+
+.tile-egy {
+	-fx-background-image: url("../img/allat/1.jpg");
+}
+
+
+.ketto {
+	-fx-background-image: url("../img/allat/2.jpg");
+}
+
+
+.harom {
+	-fx-background-image: url("../img/allat/3.jpg");
+}
+
+
+.negy {
+	-fx-background-image: url("../img/allat/4.jpg");
+}
+
+
+.ot {
+	-fx-background-image: url("../img/allat/5.jpg");
+}
+
+
+.hat {
+	-fx-background-image: url("../img/allat/6.jpg");
+}
+
+
+.het {
+	-fx-background-image: url("../img/allat/7.jpg");
+}
+.nyolc {
+	-fx-background-image: url("../img/allat/8.jpg");
+}
+.kilenc {
+	-fx-background-image: url("../img/allat/9.jpg");
+}
+.tiz {
+	-fx-background-image: url("../img/allat/10.jpg");
+}
+
+
+.tile-visibility-visible:hover {
+	-fx-effect: innershadow( gaussian , rgba(60,60,60,0.7) , 20,0,0,0 );
+}
+.tile-visibility-dim {
+	-fx-opacity: 0.4;
+}
+.tile-visibility-not_visible {
+	-fx-background: black;
+}
+
