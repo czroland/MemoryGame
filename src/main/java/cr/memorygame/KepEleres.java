@@ -50,9 +50,9 @@ public final class KepEleres {
      *
      * @param EleresMappa - beállítása
      */
-    public void setEleres(File EleresMappa) {
+    /*public void setEleres(File EleresMappa) {
         Kep = EleresMappa;
-    }
+    }*/
 
     /**
      *
@@ -71,7 +71,7 @@ public final class KepEleres {
      *
      * @return a mappa elérése File-ként
      */
-    public File getKep() {
+    /*public File getKep() {
         return Kep;
-    }
+    }*/
 }

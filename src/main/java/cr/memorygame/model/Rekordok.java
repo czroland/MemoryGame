@@ -23,44 +23,46 @@ import java.util.Date;
  * A rekordokat, és annak adatait tartalmazó osztály.
  */
 public class Rekordok {
-    String nev;
-    int helyesTipp;
-    int helytelenTipp;
+
+    private String nev;
+    private int helyesTipp;
+    private int helytelenTipp;
 
     /**
-     * 
+     * Az osztály constructora.
+     *
+     * @param nev - a játékos neve
+     * @param helyesTipp - a helyesen megadott tippek száma
+     * @param helytelenTipp - a helytelenül megadott tippek száma
+     */
+    public Rekordok(String nev, int helyesTipp, int helytelenTipp) {
+        this.nev = nev;
+        this.helyesTipp = helyesTipp;
+        this.helytelenTipp = helytelenTipp;
+    }
+
+    /**
+     *
      * @return nev
      */
     public String getNev() {
         return nev;
     }
-/**
- * 
- * @return helyesTipp
- */
+
+    /**
+     *
+     * @return helyesTipp
+     */
     public int getHelyesTipp() {
         return helyesTipp;
     }
+
     /**
-     * 
+     *
      * @return helytelenTipp
      */
-
     public int getHelytelenTipp() {
         return helytelenTipp;
     }
-    
-    
-/**
- * Az osztály constructora.
- * @param nev - a játékos neve
- * @param helyesTipp - a helyesen megadott tippek száma
- * @param helytelenTipp - a helytelenül megadott tippek száma
- */
-    public Rekordok(String nev, int helyesTipp,int helytelenTipp) {
-        this.nev = nev;
-        this.helyesTipp = helyesTipp;
-        this.helytelenTipp = helytelenTipp;
-    }
-    
+
 }

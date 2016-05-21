@@ -42,69 +42,81 @@ public class Player {
         this.nehezseg = ((nehezseg != null) ? nehezseg : Nehezseg.Közepes);
         this.tema = ((tema != null) ? tema : Temak.allat);
         this.name = name;
-        
-        logger.info(name+" játékos létrehozva");
-        logger.info(nehezseg+" nehézségi fokozat beallitva");
-                logger.info(tema+" választott téma beállitva");
 
+        logger.info(name + " játékos létrehozva");
+        logger.info(nehezseg + " nehézségi fokozat beallitva");
+        logger.info(tema + " választott téma beállitva");
 
-
-       
-    }
-/**
- * 
- * @return nehezseg
- */
-    public Nehezseg getNehezseg() {
-        return nehezseg;
-    }
-/**
- * 
- * @param nehezseg - beallitasa
- */
-    public void setNehezseg(Nehezseg nehezseg) {
-        this.nehezseg = nehezseg;
-    }
-/**
- * 
- * @return tema
- */
-    public Temak getTema() {
-        return tema;
-    }
-/**
- * 
- * @param tema - beállitása
- */
-    public void setTema(Temak tema) {
-        this.tema = tema;
-    }
-/**
- * 
- * @return naem 
- */
-    public String getName() {
-        return name;
-    }
-/**
- * 
- * @return temaeleres
- */
-    public String getTemaEleres() {
-        return temaeleres;
     }
 
     /**
-     * 
+     *
+     * @return nehezseg
+     */
+    public Nehezseg getNehezseg() {
+        return nehezseg;
+    }
+
+    /**
+     *
+     * @param nehezseg - beallitasa
+     */
+    public void setNehezseg(Nehezseg nehezseg) {
+        this.nehezseg = nehezseg;
+    }
+
+    /**
+     *
+     * @return tema
+     */
+    public Temak getTema() {
+        return tema;
+    }
+
+    /**
+     *
+     * @param tema - beállitása
+     */
+    public void setTema(Temak tema) {
+        this.tema = tema;
+    }
+
+    /**
+     *
+     * @return name
+     */
+    public String getName() {
+        return name;
+    }
+
+    /**
+     *
+     * @param name - beallitasa
+     */
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    /**
+     *
+     * @return temaeleres
+     */
+   /* public String getTemaEleres() {
+        return temaeleres;
+    }*/
+
+    /**
+     *
      * @param temaeleres - beallitasa
      */
-    public void setTemaEleres(String temaeleres) {
+   /* public void setTemaEleres(String temaeleres) {
         this.temaeleres = temaeleres;
-    }
-/**
- * 
- * @param view - beallitasa
- */
+    }*/
+
+    /**
+     *
+     * @param view - beallitasa
+     */
     public void setView(GameViewController view) {
         this.view = view;
     }
