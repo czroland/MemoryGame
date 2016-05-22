@@ -25,59 +25,25 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 /**
+ * Be nem fejezett oszataly.
  *
- * @author roli
  */
 public class RekordLista {
+
     public ArrayList<Rekordok> getHighScores() {
-		ArrayList<Rekordok> rekordok = new ArrayList<Rekordok>();
-		
-		/*try (Connection connection = ConnectionFactory.getConnection()) {
-			Statement st = connection.createStatement();
-			ResultSet rset = st.executeQuery("select * from characters");
+        ArrayList<Rekordok> rekordok = new ArrayList<Rekordok>();
 
-			while (rset.next()) {
-				String name = rset.getString("name");
-				int kills = rset.getInt("kills");
-				int distance = rset.getInt("distance");
-				
-				highScores.add(new HighScore(name, kills, distance));
-			}
-		} catch (SQLException e) {
-			logger.warn("Couldn't connect to the database.");
-			e.printStackTrace();
-		} catch (IOException e1) {
-			logger.warn("Couldn't find the database properties file.");
-			e1.printStackTrace();
-		}
-		
-		return highScores;*/
-                return null;
-	}
-     public ArrayList<String> getNames() {
-		ArrayList<String> names = new ArrayList<String>();
-                names.add("proba");
-		
-		/*try (Connection connection = ConnectionFactory.getConnection()) {
-			Statement st = connection.createStatement();
-			ResultSet rset = st.executeQuery("select * from characters");
+        return null;
+    }
 
-			while (rset.next()) {
-				String name = rset.getString("name");
-				int kills = rset.getInt("kills");
-				int distance = rset.getInt("distance");
-				
-				highScores.add(new HighScore(name, kills, distance));
-			}
-		} catch (SQLException e) {
-			logger.warn("Couldn't connect to the database.");
-			e.printStackTrace();
-		} catch (IOException e1) {
-			logger.warn("Couldn't find the database properties file.");
-			e1.printStackTrace();
-		}
-		
-		return highScores;*/
-                return names;
-	}
+    /**
+     * Az Xmlben levo nevek visszadasara szolgal.
+     * @return 
+     */
+    public ArrayList<String> getNames() {
+        ArrayList<String> names = new ArrayList<String>();
+        names.add("proba");
+
+        return names;
+    }
 }

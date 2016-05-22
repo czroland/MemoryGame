@@ -27,10 +27,16 @@ import javafx.application.Platform;
 
 import cr.memorygame.Player;
 import cr.memorygame.Talalat;
+import cr.memorygame.model.RekListazasa;
+import cr.memorygame.model.Rekordok;
+import cr.memorygame.model.XMLFeldolg;
 import static cr.memorygame.view.Main.logger;
+import java.io.IOException;
 import java.net.URI;
 import java.net.URL;
 import java.util.Optional;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.scene.Node;
@@ -39,6 +45,9 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonBar.ButtonData;
 import javafx.scene.control.ButtonType;
+import javafx.scene.control.ListView;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -46,6 +55,9 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
+import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.transform.TransformerException;
+import org.xml.sax.SAXException;
 
 /**
  *
@@ -66,6 +78,15 @@ public class GameViewController extends ViewController {
     private Label jneve;
 
     @FXML
+    private TableView reklista;
+
+    /* @FXML
+     private TableColumn nev;
+     @FXML
+     private TableColumn helyes;
+     @FXML
+     private TableColumn helytelen;*/
+    @FXML
     private Label tema_neve;
 
     @FXML
@@ -77,6 +98,7 @@ public class GameViewController extends ViewController {
     private Label nht;
     String kepeleres;
     KepEleres kep;
+    Rekordok rek;
 
     int talalat_szama = 0;
     int teves_talalat = 0;
@@ -120,7 +142,6 @@ public class GameViewController extends ViewController {
         }
         pane.getChildren().clear();
         kep = new KepEleres(game.getKepEleres().getEleres() + "/");
-        System.out.println(game.getKepEleres().getEleres() + "/");
 
         jatek = new Builder(kep, 10).GameBuilder();
 
@@ -211,6 +232,32 @@ public class GameViewController extends ViewController {
                     ht.setText(Integer.toString(talalat_szama));
                     nht.setText(Integer.toString(teves_talalat));
                     if (ht.getText().equals("10")) {
+                        logger.info("Új rekord létrehozása.");
+
+                        rek = new Rekordok(jneve.getText(), talalat_szama, teves_talalat);
+                        try {
+                            logger.info("Rekord xml-be történő kiirása.");
+
+                            game.XMLupdate(rek);
+
+                            XMLFeldolg feld = new XMLFeldolg();
+                            logger.info("Rekordok xml-ből történő kiirása.");
+
+                            for (Rekordok r : feld.listData()) {
+                                reklista.getItems().add(new RekListazasa(r.getNev(),r.getHelyesTipp(),r.getHelytelenTipp()));
+
+                            }
+
+                        } catch (ParserConfigurationException ex) {
+                            Logger.getLogger(GameViewController.class.getName()).log(Level.SEVERE, null, ex);
+                        } catch (IOException ex) {
+                            Logger.getLogger(GameViewController.class.getName()).log(Level.SEVERE, null, ex);
+                        } catch (SAXException ex) {
+                            Logger.getLogger(GameViewController.class.getName()).log(Level.SEVERE, null, ex);
+                        } catch (TransformerException ex) {
+                            Logger.getLogger(GameViewController.class.getName()).log(Level.SEVERE, null, ex);
+                        }
+
                         alert();
                     }
 

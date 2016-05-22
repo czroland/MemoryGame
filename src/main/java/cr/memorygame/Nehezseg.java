@@ -18,7 +18,8 @@ package cr.memorygame;
 
 /**
  *
- * A játék nehézsége. Különböző számú rossz tippet engd meg,
+ * A játék nehézsége. 
+ * Különböző számú rossz tippet enged meg,
  */
 public enum Nehezseg {
 

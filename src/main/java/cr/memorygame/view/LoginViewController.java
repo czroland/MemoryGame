@@ -20,6 +20,7 @@ import cr.memorygame.Nehezseg;
 import cr.memorygame.Temak;
 import cr.memorygame.Player;
 import cr.memorygame.KepEleres;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.application.Platform;
@@ -34,6 +35,8 @@ import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
+import javax.xml.parsers.ParserConfigurationException;
+import org.xml.sax.SAXException;
 
 /**
  *
@@ -62,7 +65,7 @@ public class LoginViewController extends ViewController {
     private Button button;
 
     @FXML
-    private void check() {
+    private void check() throws IOException, ParserConfigurationException, SAXException {
         if (name.getText().length() < 3) {
             nev_hiba.setText("Túl rövid név!");
         } else {

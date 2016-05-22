@@ -65,4 +65,16 @@ public class Rekordok {
         return helytelenTipp;
     }
 
+    public void setNev(String nev) {
+        this.nev = nev;
+    }
+
+    public void setHelyesTipp(int helyesTipp) {
+        this.helyesTipp = helyesTipp;
+    }
+
+    public void setHelytelenTipp(int helytelenTipp) {
+        this.helytelenTipp = helytelenTipp;
+    }
+
 }

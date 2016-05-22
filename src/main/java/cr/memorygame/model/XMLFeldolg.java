@@ -1,8 +1,20 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+ * Copyright (C) 2016 Czégényi Roland
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+*/
+
 package cr.memorygame.model;
 
 import java.io.File;
@@ -28,7 +40,7 @@ import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
 /**
- *
+ * XMLFeldolgozó osztály.
  * @author roli
  */
 public class XMLFeldolg {
@@ -36,41 +48,25 @@ public class XMLFeldolg {
     public XMLFeldolg() {
     }
 
-    public String createXMLFile() throws IOException, ParserConfigurationException, SAXException {
+    /**
+     * Uj adat hozzadasa az XML file-hoz, amennyiben a jatek veger ert.
+     * @param rekord a jatekos neve, helyes es helytelen tippjeinek szama.
+     * @throws ParserConfigurationException
+     * @throws IOException 
+     * @throws SAXException
+     * @throws TransformerConfigurationException
+     * @throws TransformerException 
+     */
+    public void addNewData(Rekordok rekord) throws ParserConfigurationException, IOException, SAXException, TransformerConfigurationException, TransformerException {
         String filepath = System.getProperty("user.home") + File.separator;
 
         File xmlfile = new File(filepath + "memorygame.xml");
 
-        if (xmlfile.exists()) {
-            logger.info("az XML file letezik");
-        } else {
-            logger.info("az XML file nem letezik, letrehozzuk az user.home -ban windowson nem volt tesztelve");
-            xmlfile.createNewFile();
-
-            FileWriter fw = new FileWriter(xmlfile.getAbsoluteFile());
-            BufferedWriter bw = new BufferedWriter(fw);
-
-            logger.info("fejlec beirasa");
-            bw.write("<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"no\"?>");
-            bw.newLine();
-
-            logger.info("gyokerelem ketrehozasa");
-            bw.write("<alma>");
-            bw.write("</alma>");
-
-            bw.close();
-        }
-
-        return filepath + "memorygame.xml";
-
-    }
-
-    public void addNewData(Rekordok rekord) throws ParserConfigurationException, IOException, SAXException, TransformerConfigurationException, TransformerException {
         DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
         DocumentBuilder dBuilder;
         dBuilder = dbFactory.newDocumentBuilder();
 
-        Document doc = dBuilder.parse(createXMLFile());
+        Document doc = dBuilder.parse(filepath + "memorygame.xml");
 
         Element gyoker = doc.getDocumentElement();
         Element ujrekord = doc.createElement("rekord");
@@ -81,7 +77,7 @@ public class XMLFeldolg {
 
         Element ujhelyestipp = doc.createElement("helyes");
         ujhelyestipp.setTextContent(Integer.toString(rekord.getHelyesTipp()));
-        ujrekord.appendChild(ujnev);
+        ujrekord.appendChild(ujhelyestipp);
 
         Element ujhelytelen = doc.createElement("helytelen");
         ujhelytelen.setTextContent(Integer.toString(rekord.getHelytelenTipp()));
@@ -93,34 +89,43 @@ public class XMLFeldolg {
         Transformer transformer = transformerFactory.newTransformer();
         DOMSource source = new DOMSource(doc);
 
-        File file = new File(createXMLFile());
+        File file = new File(filepath + "memorygame.xml");
         StreamResult result = new StreamResult(file);
         transformer.setOutputProperty(OutputKeys.INDENT, "yes");
         transformer.setOutputProperty("{http://xml.apache.org/xslt}indent-amount", "2");
         transformer.transform(source, result);
 
     }
-
+/**
+ * 
+ * @return a {@link cr.memorygame.model.Rekordok} egy rekordok nevű példánya, vagyis nev, helyes helytelen pontok
+ * @throws ParserConfigurationException
+ * @throws SAXException
+ * @throws IOException 
+ */
     public List<Rekordok> listData() throws ParserConfigurationException, SAXException, IOException {
         List<Rekordok> rekordok = new ArrayList<>();
+        String filepath = System.getProperty("user.home") + File.separator;
+
+        File xmlfile = new File(filepath + "memorygame.xml");
 
         DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
         DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
-        Document doc = dBuilder.parse(createXMLFile());
+        Document doc = dBuilder.parse(filepath + "memorygame.xml");
 
         doc.getDocumentElement().normalize();
-        
-         NodeList rekordList = doc.getElementsByTagName("rekord");
-         
-         for (int i = 0; i < rekordList.getLength(); i++) {
-                Element element2 = (Element) rekordList.item(i);
-                
-                rekordok.add(new Rekordok(element2.getElementsByTagName("nev").item(0).getTextContent(),
-                                           Integer.parseInt(element2.getElementsByTagName("helyes").item(0).getTextContent()),
-                                            Integer.parseInt(element2.getElementsByTagName("helytelen").item(0).getTextContent())                
-                ));
-         }
 
+        NodeList rekordList = doc.getElementsByTagName("rekord");
+
+        for (int i = 0; i < rekordList.getLength(); i++) {
+            Element element2 = (Element) rekordList.item(i);
+           // System.out.println(element2.getElementsByTagName("nev").item(0).getTextContent());
+
+            rekordok.add(new Rekordok(element2.getElementsByTagName("nev").item(0).getTextContent(),
+                    Integer.parseInt(element2.getElementsByTagName("helyes").item(0).getTextContent()),
+                    Integer.parseInt(element2.getElementsByTagName("helytelen").item(0).getTextContent())
+            ));
+        }
         return rekordok;
     }
 }
