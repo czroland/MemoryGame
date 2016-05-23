@@ -16,7 +16,7 @@
  */
 
 /**
- * MVC - controller.
+ * MVC - model.
  * Ez az package tartalmazza a játék model osztályait.
  * 
  */

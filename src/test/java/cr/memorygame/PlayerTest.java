@@ -16,7 +16,6 @@
  */
 package cr.memorygame;
 
-
 import org.junit.Test;
 import static org.junit.Assert.*;
 
@@ -35,60 +34,54 @@ public class PlayerTest {
 
         assertEquals("Helyes nev", true, player.getName().equals("nev"));
         assertEquals("Helytelen nev", false, (!player.getName().equals("nev")));
-        
+
         /*assertEquals("Helyes nev", true, player.name.equals("nev"));
-        assertEquals("Helytelen nev", false, (!player.name.equals("nev")));*/
-        
+         assertEquals("Helytelen nev", false, (!player.name.equals("nev")));*/
         assertEquals("Helyes nehezsegi fokozat", true, player.getNehezseg().equals(nehezseg));
         assertEquals("Helytelen nehezsegi fokozat", false, (!player.getNehezseg().equals(nehezseg)));
-        
-       /* assertEquals("Helyes nehezsegi fokozat", true, player.nehezseg.equals(nehezseg));
-        assertEquals("Helytelen nehezsegi fokozat", false, (!player.nehezseg.equals(nehezseg)));*/
-        
-        assertEquals("Helyes nehezsegi fokozat", true, player.getTema().equals(tema));
-        assertEquals("Helytelen nehezsegi fokozat", false,(!player.getTema().equals(tema)));
-        
-       /* assertEquals("Helyes nehezsegi fokozat", true, player.tema.equals(tema));
-        assertEquals("Helytelen nehezsegi fokozat", false,(!player.tema.equals(tema)));*/
 
+        /* assertEquals("Helyes nehezsegi fokozat", true, player.nehezseg.equals(nehezseg));
+         assertEquals("Helytelen nehezsegi fokozat", false, (!player.nehezseg.equals(nehezseg)));*/
+        assertEquals("Helyes nehezsegi fokozat", true, player.getTema().equals(tema));
+        assertEquals("Helytelen nehezsegi fokozat", false, (!player.getTema().equals(tema)));
+
+        /* assertEquals("Helyes nehezsegi fokozat", true, player.tema.equals(tema));
+         assertEquals("Helytelen nehezsegi fokozat", false,(!player.tema.equals(tema)));*/
     }
-        @Test
-        public void JatekosEllenorzes2() {
-            String nev = "nev";
+
+    @Test
+    public void JatekosEllenorzes2() {
+        String nev = "nev";
         Nehezseg nehezseg = null;
         Temak tema = null;
         Player player = new Player(nev, nehezseg, tema);
-        
-         assertEquals("Helyes nehezsegi fokozat", true, player.getNehezseg().equals(player.nehezseg.Közepes));
+
+        assertEquals("Helyes nehezsegi fokozat", true, player.getNehezseg().equals(player.nehezseg.Közepes));
         assertEquals("Helytelen nehezsegi fokozat", false, (!player.getNehezseg().equals(player.nehezseg.Közepes)));
-        
-           assertEquals("Helyes nehezsegi fokozat", true, player.getTema().equals(player.tema.allat));
-        assertEquals("Helytelen nehezsegi fokozat", false,(! player.getTema().equals(player.tema.allat)));
-        
-        
-        
-        }
-        
-         @Test
-        public void JatekosEllenorzes3() {
-       
+
+        assertEquals("Helyes nehezsegi fokozat", true, player.getTema().equals(player.tema.allat));
+        assertEquals("Helytelen nehezsegi fokozat", false, (!player.getTema().equals(player.tema.allat)));
+
+    }
+
+    @Test
+    public void JatekosEllenorzes3() {
+
         Player player = new Player(null, null, null);
-        
+
         player.setName("alma");
         player.setNehezseg(Nehezseg.Nehéz);
         player.setTema(Temak.virag);
-        
-         assertEquals("Helyes nev", true, player.getName().equals("alma"));
+
+        assertEquals("Helyes nev", true, player.getName().equals("alma"));
         assertEquals("Helytelen nev", false, (!player.getName().equals("alma")));
-        
-         assertEquals("Helyes nehezsegi fokozat", true, player.getNehezseg().equals(player.nehezseg.Nehéz));
+
+        assertEquals("Helyes nehezsegi fokozat", true, player.getNehezseg().equals(player.nehezseg.Nehéz));
         assertEquals("Helytelen nehezsegi fokozat", false, (!player.getNehezseg().equals(player.nehezseg.Nehéz)));
-        
-           assertEquals("Helyes nehezsegi fokozat", true, player.getTema().equals(player.tema.virag));
-        assertEquals("Helytelen nehezsegi fokozat", false,(! player.getTema().equals(player.tema.virag)));
-        
-        
-        
-        }
+
+        assertEquals("Helyes nehezsegi fokozat", true, player.getTema().equals(player.tema.virag));
+        assertEquals("Helytelen nehezsegi fokozat", false, (!player.getTema().equals(player.tema.virag)));
+
+    }
 
 }

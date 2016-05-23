@@ -15,8 +15,8 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 package cr.memorygame;
-import static cr.memorygame.view.Main.logger;
 
+import static cr.memorygame.view.Main.logger;
 
 /**
  * Ez az osztály állítja be a játék paramétereit.
@@ -25,43 +25,49 @@ public class Builder {
 
     private KepEleres kepeleres;
     private int parok_szama;
-/**
- * A Builder osztály constructora.
- * @param kepeleres - a választott témához tartozó képek elérési mappája.
- * @param parok_szama - a játékban használt képek száma.
- */
+
+    /**
+     * A Builder osztály konstruktora, amely létrehoz egy objektumot.
+     *
+     * @param kepeleres a választott témához tartozó képek elérési mappája.
+     * @param parok_szama a játékban használt képek száma.
+     */
     public Builder(KepEleres kepeleres, int parok_szama) {
         this.kepeleres = kepeleres;
         this.parok_szama = parok_szama;
-        logger.info(kepeleres.getEleres()+"/ képelérési mappa");
-        logger.info(parok_szama+" pár kép inicializálva");
+        logger.info(kepeleres.getEleres() + "/ képelérési mappa");
+        logger.info(parok_szama + " pár kép inicializálva");
 
-        
     }
 
-    
-/**
- * @return kepeleres
- */
+    /**
+     * Visszaadja a Builder képelérési mappáját.
+     *
+     * @return a kepeleres
+     */
     public KepEleres getKepeleres() {
         return kepeleres;
     }
- /**
- * @return parok_szama
- */
+
+    /**
+     * Visszaadja a Builderben felhasznált képpárok számát.
+     *
+     * @return a parok_szama
+     */
     public int getParok_szama() {
         return parok_szama;
     }
 
-   /**
- * @return Jatek a megadott paraméterekkel
- */
-    public Jatek GameBuilder()
-    {            logger.info("Új játék létrehozva");
+    /**
+     * Létrehoz egy új Jatek-ot a megadott paraméterekkel.
+     *
+     * @return egy új Jatek a megadott paraméterekkel
+     */
+    public Jatek GameBuilder() {
+        logger.info("Új játék létrehozva");
 
-    return new Jatek(this.kepeleres,this.parok_szama);
+        return new Jatek(this.kepeleres, this.parok_szama);
 
     }
-    
-    
+
 }

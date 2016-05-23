@@ -21,7 +21,7 @@ import javafx.beans.property.SimpleStringProperty;
 
 /**
  *
- * a tableview feltoltesere letrehozott osztaly
+ * Osztály, amely egy rekordot reprezentál a rekordlistából.
  */
 public class RekListazasa {
 
@@ -30,7 +30,7 @@ public class RekListazasa {
     private final SimpleIntegerProperty helytelen;
 
     /**
-     * az osztaly constructora
+     * KOnstruktor, amely létrehoz egy RekListazasa objektumot.
      *
      * @param nev a jatekosok neve, mely az xmlben van
      * @param helyes a jatekos helyes tippjeinek szama
@@ -43,31 +43,28 @@ public class RekListazasa {
     }
 
     /**
-     * szep dolog, hogy a getter neve Propertyre kell vegzodjon, maskepp
-     * formazatlan data-t add vissza
+     * Visszaadja a nevet (szep dolog, hogy a getter neve Propertyre kell
+     * vegzodjon, maskepp formazatlan data-t add vissza).
      *
-     * @return nev
+     * @return a nev
      */
     public SimpleStringProperty nevProperty() {
         return nev;
     }
 
     /**
-     * szep dolog, hogy a getter neve Propertyre kell vegzodjon, maskepp
-     * formazatlan data-t add vissza
+     * Visszaadja a helyes tippek sz'm't.
      *
-     * @return helyes
+     * @return a helyes tippek száma
      */
-
     public SimpleIntegerProperty helyesProperty() {
         return helyes;
     }
 
     /**
-     * szep dolog, hogy a getter neve Propertyre kell vegzodjon, maskepp
-     * formazatlan data-t add vissza
+     * Visszaadja a helytelen tippek sz'm't.
      *
-     * @return helytelen
+     * @return a helytelen tippek száma
      */
     public SimpleIntegerProperty helytelenProperty() {
         return helytelen;

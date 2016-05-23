@@ -32,11 +32,11 @@ public class Player {
     public String name;
 
     /**
-     * Új játékos létrehozása.
+     * Konstruktor, amely létrehoz egy játékost reprezentáló objektumot.
      *
-     * @param name - a játékos neve
-     * @param nehezseg - a választott nehézségi fokozat
-     * @param tema - a választott téma
+     * @param name a játékos neve
+     * @param nehezseg a választott nehézségi fokozat
+     * @param tema a választott téma
      */
     public Player(String name, Nehezseg nehezseg, Temak tema) {
         this.nehezseg = ((nehezseg != null) ? nehezseg : Nehezseg.Közepes);
@@ -50,48 +50,54 @@ public class Player {
     }
 
     /**
+     * Visszaadja a választott nehézséget.
      *
-     * @return nehezseg
+     * @return a játékos választott nehézségét
      */
     public Nehezseg getNehezseg() {
         return nehezseg;
     }
 
     /**
+     * Beállitja a nehézséget.
      *
-     * @param nehezseg - beallitasa
+     * @param nehezseg beallitasa
      */
     public void setNehezseg(Nehezseg nehezseg) {
         this.nehezseg = nehezseg;
     }
 
     /**
+     * Visszaadja a választott témát.
      *
-     * @return tema
+     * @return a játékos választott témáját
      */
     public Temak getTema() {
         return tema;
     }
 
     /**
+     * Beállitja a témát.
      *
-     * @param tema - beállitása
+     * @param tema beállitása
      */
     public void setTema(Temak tema) {
         this.tema = tema;
     }
 
     /**
+     * Visszaadja a választott nevet.
      *
-     * @return name
+     * @return a választott <code>name</code> név
      */
     public String getName() {
         return name;
     }
 
     /**
+     * Beállitja a nevet.
      *
-     * @param name - beallitasa
+     * @param name név beallitása
      */
     public void setName(String name) {
         this.name = name;
@@ -101,21 +107,20 @@ public class Player {
      *
      * @return temaeleres
      */
-   /* public String getTemaEleres() {
-        return temaeleres;
-    }*/
-
+    /* public String getTemaEleres() {
+     return temaeleres;
+     }*/
     /**
      *
      * @param temaeleres - beallitasa
      */
-   /* public void setTemaEleres(String temaeleres) {
-        this.temaeleres = temaeleres;
-    }*/
-
+    /* public void setTemaEleres(String temaeleres) {
+     this.temaeleres = temaeleres;
+     }*/
     /**
+     * Beállitja a játék nézetét.
      *
-     * @param view - beallitasa
+     * @param view beallitása
      */
     public void setView(GameViewController view) {
         this.view = view;

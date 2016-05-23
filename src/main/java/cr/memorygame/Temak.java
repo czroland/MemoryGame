@@ -18,7 +18,7 @@ package cr.memorygame;
 
 /**
  *
- * A játékos által választható témákat tartalmazó osztály.
+ * A játékos által választható témákat tartalmazó felsorolás.
  */
 public enum Temak {
 

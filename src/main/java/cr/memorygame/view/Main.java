@@ -65,13 +65,12 @@ public class Main extends Application {
             primaryStage.centerOnScreen();
             primaryStage.show();
             logger.info("Bejelentkezési felület.");
-            primaryStage.setOnCloseRequest((WindowEvent e)-> {
+            primaryStage.setOnCloseRequest((WindowEvent)-> {
             	logger.info("Kilépés.");
             });
              
    
         } catch (IOException e) {
-            e.printStackTrace();
         }
 
     }

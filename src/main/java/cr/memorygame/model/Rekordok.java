@@ -29,11 +29,12 @@ public class Rekordok {
     private int helytelenTipp;
 
     /**
-     * Az osztály constructora.
+     * Konstruktor, mely egy <code>Rekordok</code> -at reprezentáló objektumot
+     * hoz létre.
      *
-     * @param nev - a játékos neve
-     * @param helyesTipp - a helyesen megadott tippek száma
-     * @param helytelenTipp - a helytelenül megadott tippek száma
+     * @param nev a játékos neve
+     * @param helyesTipp a helyesen megadott tippek száma
+     * @param helytelenTipp a helytelenül megadott tippek száma
      */
     public Rekordok(String nev, int helyesTipp, int helytelenTipp) {
         this.nev = nev;
@@ -42,37 +43,55 @@ public class Rekordok {
     }
 
     /**
+     * Visszaadja a játékos nevét.
      *
-     * @return nev
+     * @return a játékos neve
      */
     public String getNev() {
         return nev;
     }
 
     /**
+     * Visszaadja a helyes tippek számát.
      *
-     * @return helyesTipp
+     * @return a helyesTipp-ek száma
      */
     public int getHelyesTipp() {
         return helyesTipp;
     }
 
     /**
+     * Visszaadja a helytelen tippek számát.
      *
-     * @return helytelenTipp
+     * @return a helytelenTipp-ek száma
      */
     public int getHelytelenTipp() {
         return helytelenTipp;
     }
 
+    /**
+     * Beállitja a játékos nevét.
+     *
+     * @param nev a játékos neve
+     */
     public void setNev(String nev) {
         this.nev = nev;
     }
 
+    /**
+     * Beállitja a játékos helyes tippeinek számát.
+     *
+     * @param helyesTipp a helzes tippek száma
+     */
     public void setHelyesTipp(int helyesTipp) {
         this.helyesTipp = helyesTipp;
     }
 
+    /**
+     * Beállitja a játékos helytelen tippeinek számát.
+     *
+     * @param helytelenTipp a helyestelen tippek száma
+     */
     public void setHelytelenTipp(int helytelenTipp) {
         this.helytelenTipp = helytelenTipp;
     }

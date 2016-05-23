@@ -16,29 +16,19 @@
  */
 package cr.memorygame;
 
-import cr.memorygame.model.Rekordok;
-import java.io.IOException;
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+
 import java.util.ArrayList;
 
 /**
- * Be nem fejezett oszataly.
+ * Be nem fejezett oszatály.
  *
  */
 public class RekordLista {
 
-    public ArrayList<Rekordok> getHighScores() {
-        ArrayList<Rekordok> rekordok = new ArrayList<Rekordok>();
-
-        return null;
-    }
-
     /**
-     * Az Xmlben levo nevek visszadasara szolgal.
-     * @return 
+     * Az Xmlben lévo nevek visszadaséra szolgál.
+     *
+     * @return a names az adatbázisban szereplő játékosok nevei
      */
     public ArrayList<String> getNames() {
         ArrayList<String> names = new ArrayList<String>();

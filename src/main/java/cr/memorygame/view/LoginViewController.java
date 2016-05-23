@@ -38,10 +38,7 @@ import javafx.scene.control.ToggleGroup;
 import javax.xml.parsers.ParserConfigurationException;
 import org.xml.sax.SAXException;
 
-/**
- *
- * @author roli
- */
+
 public class LoginViewController extends ViewController {
 
     @FXML

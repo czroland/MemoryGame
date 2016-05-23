@@ -13,8 +13,7 @@
  *
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
-*/
-
+ */
 package cr.memorygame.model;
 
 import java.io.File;
@@ -41,21 +40,18 @@ import org.xml.sax.SAXException;
 
 /**
  * XMLFeldolgozó osztály.
- * @author roli
  */
 public class XMLFeldolg {
 
-    public XMLFeldolg() {
-    }
-
     /**
-     * Uj adat hozzadasa az XML file-hoz, amennyiben a jatek veger ert.
-     * @param rekord a jatekos neve, helyes es helytelen tippjeinek szama.
-     * @throws ParserConfigurationException
-     * @throws IOException 
-     * @throws SAXException
-     * @throws TransformerConfigurationException
-     * @throws TransformerException 
+     * Új adat hozzádasa az XML file-hoz, amennyiben a játék véget ért.
+     *
+     * @param rekord a {@link cr.memorygame.model.Rekordok} egy példánya
+     * @throws ParserConfigurationException hiba a feldolgozás során
+     * @throws IOException hiba a fájlelérés során
+     * @throws SAXException hiba az adatbázisselérés során
+     * @throws TransformerConfigurationException hiba az adatformázás során
+     * @throws TransformerException hiba az adatformázás során
      */
     public void addNewData(Rekordok rekord) throws ParserConfigurationException, IOException, SAXException, TransformerConfigurationException, TransformerException {
         String filepath = System.getProperty("user.home") + File.separator;
@@ -96,13 +92,16 @@ public class XMLFeldolg {
         transformer.transform(source, result);
 
     }
-/**
- * 
- * @return a {@link cr.memorygame.model.Rekordok} egy rekordok nevű példánya, vagyis nev, helyes helytelen pontok
- * @throws ParserConfigurationException
- * @throws SAXException
- * @throws IOException 
- */
+
+    /**
+     * Az adatok kilistázása az adatbázisból.
+     *
+     * @return a {@link cr.memorygame.model.Rekordok} egy rekordok nevű
+     * példánya, vagyis nev, helyes helytelen pontok
+     * @throws ParserConfigurationException hiba a feldolgozás során
+     * @throws SAXException hiba az adatbázisselérés során
+     * @throws IOException hiba a fájlelérés során
+     */
     public List<Rekordok> listData() throws ParserConfigurationException, SAXException, IOException {
         List<Rekordok> rekordok = new ArrayList<>();
         String filepath = System.getProperty("user.home") + File.separator;
@@ -119,7 +118,7 @@ public class XMLFeldolg {
 
         for (int i = 0; i < rekordList.getLength(); i++) {
             Element element2 = (Element) rekordList.item(i);
-           // System.out.println(element2.getElementsByTagName("nev").item(0).getTextContent());
+            // System.out.println(element2.getElementsByTagName("nev").item(0).getTextContent());
 
             rekordok.add(new Rekordok(element2.getElementsByTagName("nev").item(0).getTextContent(),
                     Integer.parseInt(element2.getElementsByTagName("helyes").item(0).getTextContent()),

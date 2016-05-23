@@ -23,14 +23,14 @@ import java.util.Collections;
 
 /**
  *
- * Ez az osztaly adja meg a kepek eleresi mappáját.
+ * Ez az osztaly adja meg a képek eléresi mappáját.
  */
 public final class KepEleres {
 
     private File Kep;
 
     /**
-     * Az osztály constructora.
+     * Az osztály konstruktora.
      *
      * @param Eleres - az elérési mappa
      */
@@ -39,6 +39,7 @@ public final class KepEleres {
     }
 
     /**
+     * Beállitja a kép elérését.
      *
      * @param Eleres eleresi mappa létrehozása
      */
@@ -51,10 +52,10 @@ public final class KepEleres {
      * @param EleresMappa - beállítása
      */
     /*public void setEleres(File EleresMappa) {
-        Kep = EleresMappa;
-    }*/
-
+     Kep = EleresMappa;
+     }*/
     /**
+     * Visszaadja a képek elérési mappáját.
      *
      * @return a mappa elérése
      */
@@ -72,6 +73,6 @@ public final class KepEleres {
      * @return a mappa elérése File-ként
      */
     /*public File getKep() {
-        return Kep;
-    }*/
+     return Kep;
+     }*/
 }

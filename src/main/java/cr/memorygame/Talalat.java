@@ -29,30 +29,35 @@ public class Talalat {
     Jatek jatek;
 
     /**
+     * Visszaadja az elsőnek választott kép elérését.
      *
-     * @return elsoKep elerese
+     * @return az elsoKep elérése
      */
     public String getElsoKep() {
         return elsoKep;
     }
 
     /**
+     * Visszaadja az másodiknak választott kép elérését.
      *
-     * @return masodikKep elerese
+     * @return a masodikKep elérése
      */
     public String getMasodikKep() {
         return masodikKep;
     }
 
     /**
+     * Visszaadja hány képet választottunk ki.
      *
-     * @return talalatokszama hány kepet valasztottunk ki
+     * @return a talalatokszama hány képet valásztottunk ki
      */
     public int getTalalatSzama() {
         return talalatSzama;
     }
 
     /**
+     * Beállitja a valasztott képeket <code>elsoKep</code>-nek és
+     * <code>masodikKep</code>-nek.
      *
      * @param kep a kiválasztott kép, első választott képet megkapja elsoKep,
      * másodikat pedig masodikKep
@@ -80,6 +85,7 @@ public class Talalat {
     }
 
     /**
+     * Megmodja, hogy két képet választottunk-e ki.
      *
      * @return igazat, ha két képet választottunk ki
      */
@@ -95,8 +101,8 @@ public class Talalat {
 
     /**
      *
-     * @return hamisat, amennyiben 2 képet választottunk ki, igazat, ha többet
-     * akarunk
+     * @return hamisat, amennyiben 2 képet választottunk ki, igazat, nem
+     *
      */
     public boolean nemtalalt() {
         return nemtalalt;

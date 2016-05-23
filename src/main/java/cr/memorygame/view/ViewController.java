@@ -31,8 +31,10 @@ public class ViewController {
     protected GameController game;
 
     /**
-     * Ez a metódus teszi lehetővé a controllereknek, hogy kommunikáljanak
+     * Ez a metódus teszi lehetővé, hogy a kontrollerek kommunikáljanak
      * egymással.
+     *
+     * @param game a GameController egy példánya.
      */
     public void setGameController(GameController game) {
         this.game = game;

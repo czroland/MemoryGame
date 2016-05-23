@@ -13,8 +13,7 @@
  *
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
-*/
-
+ */
 package cr.memorygame;
 
 import cr.memorygame.model.Rekordok;
@@ -32,9 +31,8 @@ import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.TransformerException;
 import org.xml.sax.SAXException;
 
-
 /**
- * A fő controller osztály.
+ * A fő kontroller osztály.
  */
 public class GameController {
 
@@ -46,13 +44,18 @@ public class GameController {
     private XMLFeldolg feld;
 
     /**
-     * @param mainApp - hivatkozik a {@link cr.memorygame.view.Main} osztályra.
+     * Konstruktor, amely létrehoz egy <code>GameController</code> reprezentáló
+     * objektumot.
+     *
+     * @param mainApp hivatkozik a {@link cr.memorygame.view.Main} osztályra.
      */
     public GameController(Main mainApp) {
         this.mainApp = mainApp;
     }
 
     /**
+     * Visszaadja a játékost.
+     *
      * @return a player
      */
     public Player getPlayer() {
@@ -60,7 +63,9 @@ public class GameController {
     }
 
     /**
-     * @param kep - a {@link cr.memorygame.Temak} -ból választottnak megfelelően
+     * Beállitja az elérési mappát.
+     *
+     * @param kep a {@link cr.memorygame.Temak} -ból választottnak megfelelően
      * beállítja a mappát.
      */
     public void initializeKepeleres(KepEleres kep) {
@@ -69,6 +74,8 @@ public class GameController {
     }
 
     /**
+     * Visszaadja a kép elérését.
+     *
      * @return kep
      */
     public KepEleres getKepEleres() {
@@ -76,15 +83,22 @@ public class GameController {
     }
 
     /**
-     * @param player - inicializálja a játékost.
+     * Beállitja a játékost.
+     *
+     * @param player a játék egy játékosa
      */
     public void initializePlayer(Player player) {
         this.player = player;
     }
 
     /**
-     * @param name - ellenőrzi, hogy a játékos neve szerepe-e már az
-     * adatbázisba, megfelelő számú karakterből áll-e.
+     * Ellenőrzi, hogy a játékos által megadott név szerepel-e az adatbázisban.
+     *
+     * @param name a játékos által megadott <code>name</code> név
+     * @return megfelelő-e a név, avagy nem
+     * @throws IOException hiba a fájlelérés során
+     * @throws ParserConfigurationException hiba a feldolgozás során
+     * @throws SAXException hiba az adatbázisselérés során
      */
     public boolean check(String name) throws IOException, ParserConfigurationException, SAXException {
         logger.info(name + " név ellenőrzése");
@@ -99,14 +113,15 @@ public class GameController {
         }
 
     }
-    /**
-     * XML file letrehozasa, amennyiben az nem letezik.
-     * @throws IOException
-     * @throws ParserConfigurationException
-     * @throws SAXException 
-     */
-    
 
+    /**
+     * XML fájl létrehozása, amennyiben az nem létezik. A <code>check</code>
+     * metódus hívja meg. A fájlt a home könyvtárban hozzuk létre.
+     *
+     * @throws IOException hiba a fájlelérés során
+     * @throws ParserConfigurationException hiba a feldolgozás során
+     * @throws SAXException hiba az adatbázisselérés során
+     */
     public void createXMLFile() throws IOException, ParserConfigurationException, SAXException {
         String filepath = System.getProperty("user.home") + File.separator;
 
@@ -135,27 +150,35 @@ public class GameController {
     }
 
     /**
-     * a játék végeztével hozzáadja az xml-hez a játékos adatait.
+     * A játék végeztével a {@link cr.memorygame.model.XMLFeldolg}
+     * <code>addNewData</code> meghívásával hozzáadja a játékos
+     * <code>rekk</code> rekordját az XML fájlhoz. Majd a
+     * {@link cr.memorygame.model.XMLFeldolg} <code>listData</code> mehhívásával
+     * kiolvassa az adatokat.
+     *
+     * @param rekk a {@link cr.memorygame.model.Rekordok} egy objektuma
+     * @throws ParserConfigurationException hiba a feldolgozás során
+     * @throws IOException hiba a fájlelérés során
+     * @throws SAXException hiba az adatbázisselérés során
+     * @throws TransformerException formázási hiba
      */
     public void XMLupdate(Rekordok rekk) throws ParserConfigurationException, IOException, SAXException, TransformerException {
-       
 
         XMLFeldolg feld = new XMLFeldolg();
 
         feld.addNewData(rekk);
         feld.listData();
     }
-    
-   
 
     /**
-     * @param view - referencia a view controllerre.
+     * Beállitja a játék nézetét.
+     *
+     * @param view referencia a view kontrollerre.
      */
     public void setView(GameViewController view) {
         logger.info(" nézet beállítása");
 
         this.view = view;
-        player.setView(view);
     }
 
     /**
