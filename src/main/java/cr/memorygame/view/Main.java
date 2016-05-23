@@ -37,7 +37,7 @@ public class Main extends Application {
 
     private Stage primaryStage;
     private GameController game;
-     public static Logger logger = LoggerFactory.getLogger(Main.class);
+     public static final Logger logger = LoggerFactory.getLogger(Main.class);
 
     @Override
     public void start(Stage primaryStage) {
