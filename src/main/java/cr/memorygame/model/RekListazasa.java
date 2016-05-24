@@ -30,7 +30,7 @@ public class RekListazasa {
     private final SimpleIntegerProperty helytelen;
 
     /**
-     * KOnstruktor, amely létrehoz egy RekListazasa objektumot.
+     * Konstruktor, amely létrehoz egy RekListazasa objektumot.
      *
      * @param nev a jatekosok neve, mely az xmlben van
      * @param helyes a jatekos helyes tippjeinek szama
@@ -53,7 +53,7 @@ public class RekListazasa {
     }
 
     /**
-     * Visszaadja a helyes tippek sz'm't.
+     * Visszaadja a helyes tippek számát.
      *
      * @return a helyes tippek száma
      */
@@ -62,7 +62,7 @@ public class RekListazasa {
     }
 
     /**
-     * Visszaadja a helytelen tippek sz'm't.
+     * Visszaadja a helytelen tippek számát.
      *
      * @return a helytelen tippek száma
      */

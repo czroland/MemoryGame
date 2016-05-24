@@ -16,17 +16,16 @@
  */
 package cr.memorygame;
 
-
 import java.util.ArrayList;
 
 /**
- * Be nem fejezett oszatály.
+ * A nevek listázására szolgáló osztály.
  *
  */
 public class RekordLista {
 
     /**
-     * Az Xmlben lévo nevek visszadaséra szolgál.
+     * Az Xmlben lévő nevek visszadaséra szolgál.
      *
      * @return a names az adatbázisban szereplő játékosok nevei
      */

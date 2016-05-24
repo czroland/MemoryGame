@@ -44,7 +44,7 @@ public class GameController {
     private XMLFeldolg feld;
 
     /**
-     * Konstruktor, amely létrehoz egy <code>GameController</code> reprezentáló
+     * Konstruktor, amely létrehoz egy <code>GameController</code>-t reprezentáló
      * objektumot.
      *
      * @param mainApp hivatkozik a {@link cr.memorygame.view.Main} osztályra.
@@ -115,7 +115,7 @@ public class GameController {
     }
 
     /**
-     * XML fájl létrehozása, amennyiben az nem létezik. A <code>check</code>
+     * XML fájl létrehozása, amennyiben az nem létezik. A <code>check()</code>
      * metódus hívja meg. A fájlt a home könyvtárban hozzuk létre.
      *
      * @throws IOException hiba a fájlelérés során
@@ -151,7 +151,7 @@ public class GameController {
 
     /**
      * A játék végeztével a {@link cr.memorygame.model.XMLFeldolg}
-     * <code>addNewData</code> meghívásával hozzáadja a játékos
+     * <code>addNewData()</code> meghívásával hozzáadja a játékos
      * <code>rekk</code> rekordját az XML fájlhoz. Majd a
      * {@link cr.memorygame.model.XMLFeldolg} <code>listData</code> mehhívásával
      * kiolvassa az adatokat.

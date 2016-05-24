@@ -101,7 +101,7 @@ public class Talalat {
 
     /**
      *
-     * @return hamisat, amennyiben 2 képet választottunk ki, igazat, nem
+     * @return hamisat, amennyiben 2 képet választottunk ki, igazat, ha nem
      *
      */
     public boolean nemtalalt() {

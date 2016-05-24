@@ -35,14 +35,18 @@ public class PlayerTest {
         assertEquals("Helyes nev", true, player.getName().equals("nev"));
         assertEquals("Helytelen nev", false, (!player.getName().equals("nev")));
 
+        /*assertEquals("Helyes nev", true, player.name.equals("nev"));
+         assertEquals("Helytelen nev", false, (!player.name.equals("nev")));*/
         assertEquals("Helyes nehezsegi fokozat", true, player.getNehezseg().equals(nehezseg));
         assertEquals("Helytelen nehezsegi fokozat", false, (!player.getNehezseg().equals(nehezseg)));
 
-        
+        /* assertEquals("Helyes nehezsegi fokozat", true, player.nehezseg.equals(nehezseg));
+         assertEquals("Helytelen nehezsegi fokozat", false, (!player.nehezseg.equals(nehezseg)));*/
         assertEquals("Helyes nehezsegi fokozat", true, player.getTema().equals(tema));
         assertEquals("Helytelen nehezsegi fokozat", false, (!player.getTema().equals(tema)));
 
-      
+        /* assertEquals("Helyes nehezsegi fokozat", true, player.tema.equals(tema));
+         assertEquals("Helytelen nehezsegi fokozat", false,(!player.tema.equals(tema)));*/
     }
 
     @Test

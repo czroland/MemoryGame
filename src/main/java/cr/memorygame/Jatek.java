@@ -109,8 +109,8 @@ public final class Jatek {
     /**
      * Visszaadja a kiválasztott <code>index</code>-ű képet.
      *
-     * @param index - a kezelőfelületen
-     * {@link cr.memorygame.view.GameViewController} kiválasztott kép indexe
+     * @param index a kezelőfelületen
+     * {@link cr.memorygame.view.GameViewController}-en kiválasztott kép indexe
      * @return az adott index-ű kép a lapok listából
      */
     public String getCard(int index) {
