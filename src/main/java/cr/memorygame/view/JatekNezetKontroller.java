@@ -18,15 +18,15 @@ package cr.memorygame.view;
 
 import cr.memorygame.Builder;
 import javafx.fxml.FXML;
-import cr.memorygame.GameController;
-import cr.memorygame.Jatek;
+import cr.memorygame.JatekKontroller;
+import cr.memorygame.model.Jatek;
 import cr.memorygame.KepEleres;
 import javafx.scene.control.Label;
 import javafx.scene.layout.TilePane;
 import javafx.application.Platform;
 
-import cr.memorygame.Player;
-import cr.memorygame.Talalat;
+import cr.memorygame.model.Jatekos;
+import cr.memorygame.model.Talalat;
 import cr.memorygame.model.RekListazasa;
 import cr.memorygame.model.Rekordok;
 import cr.memorygame.model.XMLFeldolg;
@@ -63,13 +63,13 @@ import org.xml.sax.SAXException;
  *
  * @author roli
  */
-public class GameViewController extends ViewController {
+public class JatekNezetKontroller extends NezetKontroller {
 
-    private static final int CARDS_PER_ROW = 4;
+    private static final int lapokSoronkent = 4;
     private final EventHandler imageViewClickEventHandler = clickEventHandler();
     Jatek jatek;
     Talalat talalat;
-    Player player;
+    Jatekos jatekos;
     @FXML
     private GridPane pane;
     @FXML
@@ -102,12 +102,12 @@ public class GameViewController extends ViewController {
 
     int talalat_szama = 0;
     int teves_talalat = 0;
-    public Image backSide = new Image(this.getClass().getResourceAsStream("/bg.jpg"));
+    public Image hatter = new Image(this.getClass().getResourceAsStream("/bg.jpg"));
 
     @Override
-    public void setGameController(GameController game) {
-        this.game = game;
-        game.setView(this);
+    public void jatekKontrollerBeallitasa(JatekKontroller jatekkontr) {
+        this.jatekkontr = jatekkontr;
+        jatekkontr.nezetBeallitasa(this);
 
         adatok();
         felulet();
@@ -116,18 +116,18 @@ public class GameViewController extends ViewController {
 
     public String adatok() {
 
-        jneve.setText(game.getPlayer().getName());
-        nehezseg_neve.setText(game.getPlayer().getNehezseg().toString());
-        tema_neve.setText(game.getPlayer().getTema().toString());
+        jneve.setText(jatekkontr.getJatekos().getNev());
+        nehezseg_neve.setText(jatekkontr.getJatekos().getNehezseg().toString());
+        tema_neve.setText(jatekkontr.getJatekos().getTema().toString());
 
-        if (game.getPlayer().getTema().toString().equals("Allat")) {
+        if (jatekkontr.getJatekos().getTema().toString().equals("Allat")) {
             kepeleres = "/img/allat/";
 
         }
-        if (game.getPlayer().getTema().toString().equals("Gyümölcs")) {
+        if (jatekkontr.getJatekos().getTema().toString().equals("Gyümölcs")) {
             kepeleres = "/img/gyumolcs/";
         }
-        if (game.getPlayer().getTema().toString().equals("Virág")) {
+        if (jatekkontr.getJatekos().getTema().toString().equals("Virág")) {
             kepeleres = "/img/virag/";
         }
 
@@ -141,33 +141,33 @@ public class GameViewController extends ViewController {
             gyerek.removeEventHandler(MouseEvent.MOUSE_CLICKED, imageViewClickEventHandler);
         }
         pane.getChildren().clear();
-        kep = new KepEleres(game.getKepEleres().getEleres() + "/");
+        kep = new KepEleres(jatekkontr.getKepEleres().getEleres() + "/");
 
         jatek = new Builder(kep, 10).GameBuilder();
 
         logger.info("ImageView -ok létrehozása");
 
-        createImageViews(20);
+        ujImageViewekLetrehozasa(20);
         talalat = new Talalat();
 
     }
 
-    private void createImageViews(int size) {
-        int rowIndex = 0;
-        int colIndex = 0;
+    private void ujImageViewekLetrehozasa(int meret) {
+        int sorIndex = 0;
+        int oszlopIndex = 0;
 
-        for (int cardIndex = 0; cardIndex < size; cardIndex++) {
-            ImageView imageView = new ImageView(backSide);
+        for (int lapIndex = 0; lapIndex < meret; lapIndex++) {
+            ImageView imageView = new ImageView(hatter);
             imageView.setFitWidth(100);
             imageView.setFitHeight(100);
             imageView.setEffect(new DropShadow(5, Color.BLACK));
 
             imageView.addEventHandler(MouseEvent.MOUSE_CLICKED, imageViewClickEventHandler);
-            pane.add(imageView, rowIndex, colIndex);
-            rowIndex++;
-            if (rowIndex % CARDS_PER_ROW == 0) {
-                colIndex++;
-                rowIndex = 0;
+            pane.add(imageView, sorIndex, oszlopIndex);
+            sorIndex++;
+            if (sorIndex % lapokSoronkent == 0) {
+                oszlopIndex++;
+                sorIndex = 0;
             }
         }
     }
@@ -180,17 +180,17 @@ public class GameViewController extends ViewController {
                     return;
                 }
 
-                ImageView clickedImageView = (ImageView) event.getSource();
+                ImageView klikkeltImageView = (ImageView) event.getSource();
 
-                int col = GridPane.getColumnIndex(clickedImageView);
-                int row = GridPane.getRowIndex(clickedImageView);
+                int oszlop = GridPane.getColumnIndex(klikkeltImageView);
+                int sor = GridPane.getRowIndex(klikkeltImageView);
 
-                int selectedCardIndex = row * CARDS_PER_ROW + col;
-                logger.info(jatek.getCard(selectedCardIndex) + "kép lett kiválasztva");
+                int valasztottLapIndex = sor * lapokSoronkent + oszlop;
+                logger.info(jatek.getLapIndex(valasztottLapIndex) + "kép lett kiválasztva");
 
                 //System.out.println(selectedCardIndex+"korte");
-                if (talalat.UjTalalat(jatek.getCard(selectedCardIndex))) {
-                    clickedImageView.setImage(new Image(jatek.getCard(selectedCardIndex)));
+                if (talalat.UjTalalat(jatek.getLapIndex(valasztottLapIndex))) {
+                    klikkeltImageView.setImage(new Image(jatek.getLapIndex(valasztottLapIndex)));
 
                 }
 
@@ -201,7 +201,7 @@ public class GameViewController extends ViewController {
                         talalat_szama++;
 
                         for (int i = 0; i < 20; i++) {
-                            if (jatek.getCard(i).equals(talalat.getElsoKep()) && jatek.getCard(i).equals(talalat.getMasodikKep())) {
+                            if (jatek.getLapIndex(i).equals(talalat.getElsoKep()) && jatek.getLapIndex(i).equals(talalat.getMasodikKep())) {
                                 pane.getChildren().get(i).removeEventHandler(MouseEvent.MOUSE_CLICKED, imageViewClickEventHandler);
                                 logger.info(i + ".ik lap mostmár nem klikkelhető");
                             }
@@ -216,9 +216,9 @@ public class GameViewController extends ViewController {
                         logger.info("a kiválasztott képek nem egyeznek");
                         teves_talalat++;
                         for (int i = 0; i < 20; i++) {
-                            if (jatek.getCard(i).equals(talalat.getElsoKep()) || jatek.getCard(i).equals(talalat.getMasodikKep())) {
+                            if (jatek.getLapIndex(i).equals(talalat.getElsoKep()) || jatek.getLapIndex(i).equals(talalat.getMasodikKep())) {
 
-                                ((ImageView) pane.getChildren().get(i)).setImage(backSide);
+                                ((ImageView) pane.getChildren().get(i)).setImage(hatter);
 
                             }
 
@@ -238,24 +238,26 @@ public class GameViewController extends ViewController {
                         try {
                             logger.info("Rekord xml-be történő kiirása.");
 
-                            game.XMLupdate(rek);
+                            jatekkontr.XMLFrissitess(rek);
 
                             XMLFeldolg feld = new XMLFeldolg();
+
+                            feld.listData();
                             logger.info("Rekordok xml-ből történő kiirása.");
 
                             for (Rekordok r : feld.listData()) {
-                                reklista.getItems().add(new RekListazasa(r.getNev(),r.getHelyesTipp(),r.getHelytelenTipp()));
+                                reklista.getItems().add(new RekListazasa(r.getNev(), r.getHelyesTipp(), r.getHelytelenTipp()));
 
                             }
 
                         } catch (ParserConfigurationException ex) {
-                            Logger.getLogger(GameViewController.class.getName()).log(Level.SEVERE, null, ex);
+                            Logger.getLogger(JatekNezetKontroller.class.getName()).log(Level.SEVERE, null, ex);
                         } catch (IOException ex) {
-                            Logger.getLogger(GameViewController.class.getName()).log(Level.SEVERE, null, ex);
+                            Logger.getLogger(JatekNezetKontroller.class.getName()).log(Level.SEVERE, null, ex);
                         } catch (SAXException ex) {
-                            Logger.getLogger(GameViewController.class.getName()).log(Level.SEVERE, null, ex);
+                            Logger.getLogger(JatekNezetKontroller.class.getName()).log(Level.SEVERE, null, ex);
                         } catch (TransformerException ex) {
-                            Logger.getLogger(GameViewController.class.getName()).log(Level.SEVERE, null, ex);
+                            Logger.getLogger(JatekNezetKontroller.class.getName()).log(Level.SEVERE, null, ex);
                         }
 
                         alert();
@@ -287,7 +289,7 @@ public class GameViewController extends ViewController {
         } else {
             logger.info("Új játék.");
 
-            game.start();
+            jatekkontr.start();
         }
 
     }

@@ -14,25 +14,25 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package cr.memorygame;
+package cr.memorygame.model;
+
+import java.util.ArrayList;
 
 /**
+ * A nevek listázására szolgáló osztály.
  *
- * A játékos által választható témákat tartalmazó felsorolás.
  */
-public enum Temak {
+public class RekordLista {
 
     /**
-     * Virágokat tartalmazó képek jelennek meg.
+     * Az Xmlben lévő nevek visszadaséra szolgál.
+     *
+     * @return a names az adatbázisban szereplő játékosok nevei
      */
-    virag,
-    /**
-     * Állatokat tartalmazó képek jelennek meg.
-     */
-    allat,
-    /**
-     * Gyümölcsöket tartalmazó képek jelennek meg.
-     */
-    gyumolcs
+    public ArrayList<String> getNames() {
+        ArrayList<String> names = new ArrayList<String>();
+        names.add("proba");
 
+        return names;
+    }
 }

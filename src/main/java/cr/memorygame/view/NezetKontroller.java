@@ -14,25 +14,25 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package cr.memorygame;
+package cr.memorygame.view;
 
-import java.util.ArrayList;
+import cr.memorygame.JatekKontroller;
 
 /**
- * A nevek listázására szolgáló osztály.
- *
+ * Az FX kezelőfelület ablakai ebből az osztályból vannak származtatva.
  */
-public class RekordLista {
+public class NezetKontroller {
+
+    protected JatekKontroller jatekkontr;
 
     /**
-     * Az Xmlben lévő nevek visszadaséra szolgál.
+     * Ez a metódus teszi lehetővé, hogy a kontrollerek kommunikáljanak
+     * egymással.
      *
-     * @return a names az adatbázisban szereplő játékosok nevei
+     * @param game a GameController egy példánya.
      */
-    public ArrayList<String> getNames() {
-        ArrayList<String> names = new ArrayList<String>();
-        names.add("proba");
-
-        return names;
+    public void jatekKontrollerBeallitasa(JatekKontroller jatekkontr) {
+        this.jatekkontr = jatekkontr;
     }
+
 }

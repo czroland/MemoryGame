@@ -19,15 +19,16 @@ package cr.memorygame.view;
 import javafx.application.Application;
 import static javafx.application.Application.launch;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import java.io.IOException;
-import javafx.scene.layout.BorderPane;
 import javafx.stage.WindowEvent;
 
-import cr.memorygame.GameController;
+import cr.memorygame.JatekKontroller;
+import java.util.Optional;
 import javafx.application.Platform;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.scene.layout.AnchorPane;
 
 import org.slf4j.Logger;
@@ -36,8 +37,8 @@ import org.slf4j.LoggerFactory;
 public class Main extends Application {
 
     private Stage primaryStage;
-    private GameController game;
-     public static final Logger logger = LoggerFactory.getLogger(Main.class);
+    private JatekKontroller jatekkontr;
+    public static final Logger logger = LoggerFactory.getLogger(Main.class);
 
     @Override
     public void start(Stage primaryStage) {
@@ -55,9 +56,9 @@ public class Main extends Application {
             loader.setLocation(this.getClass().getResource("/fxml/belepes.fxml"));
             AnchorPane loginLayout = loader.load();
 
-            LoginViewController controller = loader.getController();
-            game = new GameController(this);
-            controller.setGameController(game);
+            BelepesNezetKontroller kontroller = loader.getController();
+            jatekkontr = new JatekKontroller(this);
+            kontroller.jatekKontrollerBeallitasa(jatekkontr);
 
             Scene scene = new Scene(loginLayout);
             primaryStage.setScene(scene);
@@ -65,27 +66,26 @@ public class Main extends Application {
             primaryStage.centerOnScreen();
             primaryStage.show();
             logger.info("Bejelentkezési felület.");
-            primaryStage.setOnCloseRequest((WindowEvent)-> {
-            	logger.info("Kilépés.");
+            primaryStage.setOnCloseRequest((WindowEvent) -> {
+                logger.info("Kilépés.");
             });
-             
-   
+
         } catch (IOException e) {
         }
 
     }
 
     /**
-	 * Megjeleníti a játék kezelőfelületét.
-	 */
+     * Megjeleníti a játék kezelőfelületét.
+     */
     public void jatek() {
         try {
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(this.getClass().getResource("/fxml/jatek.fxml"));
             AnchorPane gamelayout = loader.load();
 
-            GameViewController controller = loader.getController();
-            controller.setGameController(game);
+            JatekNezetKontroller kontroller = loader.getController();
+            kontroller.jatekKontrollerBeallitasa(jatekkontr);
 
             Scene scene = new Scene(gamelayout);
             primaryStage.setScene(scene);
@@ -94,11 +94,31 @@ public class Main extends Application {
 
             primaryStage.show();
             logger.info("Játékfelület.");
-            
-            primaryStage.setOnCloseRequest((WindowEvent e)-> {
-            	logger.info("Kilépés.");
+
+            primaryStage.setOnCloseRequest((WindowEvent e) -> {
+                Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+                alert.setTitle("Kilépés");
+                alert.setHeaderText(null);
+                alert.setContentText("Biztos ki akarsz lépni?");
+                ButtonType kilepes = new ButtonType("Kilépés");
+                ButtonType uj_jatek = new ButtonType("Új játék");
+                alert.getButtonTypes().setAll(kilepes, uj_jatek);
+                Optional<ButtonType> eredmeny = alert.showAndWait();
+
+                if (eredmeny.get() == kilepes) {
+                    logger.info("Kilepes.");
+
+                    Platform.exit();
+
+                } else {
+                    logger.info("Új játék.");
+                    e.consume();
+                    jatekkontr.start();
+                }
+
+                //logger.info("Kilépés.");
             });
-             
+
         } catch (IOException e) {
             e.printStackTrace();
         }

@@ -17,11 +17,9 @@
 package cr.memorygame.model;
 
 import java.io.File;
-import static cr.memorygame.view.Main.logger;
-import java.io.BufferedWriter;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -102,7 +100,7 @@ public class XMLFeldolg {
      * @throws SAXException hiba az adatbázisselérés során
      * @throws IOException hiba a fájlelérés során
      */
-    public List<Rekordok> listData() throws ParserConfigurationException, SAXException, IOException {
+    public static List<Rekordok> listData() throws ParserConfigurationException, SAXException, IOException {
         List<Rekordok> rekordok = new ArrayList<>();
         String filepath = System.getProperty("user.home") + File.separator;
 
@@ -125,6 +123,7 @@ public class XMLFeldolg {
                     Integer.parseInt(element2.getElementsByTagName("helytelen").item(0).getTextContent())
             ));
         }
+         Collections.sort(rekordok, Rekordok.rendez);
         return rekordok;
     }
 }

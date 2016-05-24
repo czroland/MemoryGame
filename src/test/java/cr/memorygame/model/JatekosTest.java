@@ -14,8 +14,11 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package cr.memorygame;
+package cr.memorygame.model;
 
+import cr.memorygame.model.Jatekos;
+import cr.memorygame.model.Nehezseg;
+import cr.memorygame.model.Temak;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
@@ -23,17 +26,17 @@ import static org.junit.Assert.*;
  *
  * @author roli
  */
-public class PlayerTest {
+public class JatekosTest {
 
     @Test
     public void JatekosEllenorzes() {
         String nev = "nev";
         Nehezseg nehezseg = Nehezseg.Közepes;
         Temak tema = Temak.virag;
-        Player player = new Player(nev, nehezseg, tema);
+        Jatekos player = new Jatekos(nev, nehezseg, tema);
 
-        assertEquals("Helyes nev", true, player.getName().equals("nev"));
-        assertEquals("Helytelen nev", false, (!player.getName().equals("nev")));
+        assertEquals("Helyes nev", true, player.getNev().equals("nev"));
+        assertEquals("Helytelen nev", false, (!player.getNev().equals("nev")));
 
         assertEquals("Helyes nehezsegi fokozat", true, player.getNehezseg().equals(nehezseg));
         assertEquals("Helytelen nehezsegi fokozat", false, (!player.getNehezseg().equals(nehezseg)));
@@ -50,7 +53,7 @@ public class PlayerTest {
         String nev = "nev";
         Nehezseg nehezseg = null;
         Temak tema = null;
-        Player player = new Player(nev, nehezseg, tema);
+        Jatekos player = new Jatekos(nev, nehezseg, tema);
 
         assertEquals("Helyes nehezsegi fokozat", true, player.getNehezseg().equals(player.nehezseg.Közepes));
         assertEquals("Helytelen nehezsegi fokozat", false, (!player.getNehezseg().equals(player.nehezseg.Közepes)));
@@ -63,14 +66,14 @@ public class PlayerTest {
     @Test
     public void JatekosEllenorzes3() {
 
-        Player player = new Player(null, null, null);
+        Jatekos player = new Jatekos(null, null, null);
 
-        player.setName("alma");
+        player.setNev("alma");
         player.setNehezseg(Nehezseg.Nehéz);
         player.setTema(Temak.virag);
 
-        assertEquals("Helyes nev", true, player.getName().equals("alma"));
-        assertEquals("Helytelen nev", false, (!player.getName().equals("alma")));
+        assertEquals("Helyes nev", true, player.getNev().equals("alma"));
+        assertEquals("Helytelen nev", false, (!player.getNev().equals("alma")));
 
         assertEquals("Helyes nehezsegi fokozat", true, player.getNehezseg().equals(player.nehezseg.Nehéz));
         assertEquals("Helytelen nehezsegi fokozat", false, (!player.getNehezseg().equals(player.nehezseg.Nehéz)));

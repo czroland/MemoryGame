@@ -16,6 +16,7 @@
  */
 package cr.memorygame;
 
+import cr.memorygame.model.Jatek;
 import static cr.memorygame.view.Main.logger;
 
 /**
@@ -24,7 +25,7 @@ import static cr.memorygame.view.Main.logger;
 public class Builder {
 
     private KepEleres kepeleres;
-    private int parok_szama;
+    private int parokSzama;
 
     /**
      * A Builder osztály konstruktora, amely létrehoz egy objektumot.
@@ -32,11 +33,11 @@ public class Builder {
      * @param kepeleres a választott témához tartozó képek elérési mappája.
      * @param parok_szama a játékban használt képek száma.
      */
-    public Builder(KepEleres kepeleres, int parok_szama) {
+    public Builder(KepEleres kepeleres, int parokSzama) {
         this.kepeleres = kepeleres;
-        this.parok_szama = parok_szama;
+        this.parokSzama = parokSzama;
         logger.info(kepeleres.getEleres() + "/ képelérési mappa");
-        logger.info(parok_szama + " pár kép inicializálva");
+        logger.info(parokSzama + " pár kép inicializálva");
 
     }
 
@@ -55,7 +56,7 @@ public class Builder {
      * @return a parok_szama
      */
     public int getParok_szama() {
-        return parok_szama;
+        return parokSzama;
     }
 
     /**
@@ -66,7 +67,7 @@ public class Builder {
     public Jatek GameBuilder() {
         logger.info("Új játék létrehozva");
 
-        return new Jatek(this.kepeleres, this.parok_szama);
+        return new Jatek(this.kepeleres, this.parokSzama);
 
     }
 

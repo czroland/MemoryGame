@@ -17,9 +17,7 @@
 package cr.memorygame;
 
 import java.io.File;
-import java.io.IOException;
-import java.util.Arrays;
-import java.util.Collections;
+
 
 /**
  *
@@ -27,7 +25,7 @@ import java.util.Collections;
  */
 public final class KepEleres {
 
-    private File Kep;
+    private File kep;
 
     /**
      * Az osztály konstruktora.
@@ -44,7 +42,7 @@ public final class KepEleres {
      * @param Eleres eleresi mappa létrehozása
      */
     public void setEleres(String Eleres) {
-        Kep = new File(Eleres);
+        kep = new File(Eleres);
     }
 
     /**
@@ -60,10 +58,10 @@ public final class KepEleres {
      * @return a mappa elérése
      */
     public String getEleres() {
-        if (Kep == null) {
+        if (kep == null) {
             return "";
         } else {
-            return Kep.getPath();
+            return kep.getPath();
         }
 
     }

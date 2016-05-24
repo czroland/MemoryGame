@@ -14,22 +14,22 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package cr.memorygame;
+package cr.memorygame.model;
 
-import cr.memorygame.view.GameViewController;
+import cr.memorygame.view.JatekNezetKontroller;
 import static cr.memorygame.view.Main.logger;
 
 /**
  *
  * A játékos tulajdonságait tartalmazó osztály.
  */
-public class Player {
+public class Jatekos {
 
     public Nehezseg nehezseg;
     public Temak tema;
-    public String temaeleres;
-    public GameViewController view;
-    public String name;
+    public String temaEleres;
+    public JatekNezetKontroller nezet;
+    public String nev;
 
     /**
      * Konstruktor, amely létrehoz egy játékost reprezentáló objektumot.
@@ -38,12 +38,12 @@ public class Player {
      * @param nehezseg a választott nehézségi fokozat
      * @param tema a választott téma
      */
-    public Player(String name, Nehezseg nehezseg, Temak tema) {
+    public Jatekos(String nev, Nehezseg nehezseg, Temak tema) {
         this.nehezseg = ((nehezseg != null) ? nehezseg : Nehezseg.Közepes);
         this.tema = ((tema != null) ? tema : Temak.allat);
-        this.name = name;
+        this.nev = nev;
 
-        logger.info(name + " játékos létrehozva");
+        logger.info(nev + " játékos létrehozva");
         logger.info(nehezseg + " nehézségi fokozat beallitva");
         logger.info(tema + " választott téma beállitva");
 
@@ -90,8 +90,8 @@ public class Player {
      *
      * @return a választott <code>name</code> név
      */
-    public String getName() {
-        return name;
+    public String getNev() {
+        return nev;
     }
 
     /**
@@ -99,31 +99,17 @@ public class Player {
      *
      * @param name név beallitása
      */
-    public void setName(String name) {
-        this.name = name;
+    public void setNev(String nev) {
+        this.nev = nev;
     }
 
-    /**
-     *
-     * @return temaeleres
-     */
-    /* public String getTemaEleres() {
-     return temaeleres;
-     }*/
-    /**
-     *
-     * @param temaeleres - beallitasa
-     */
-    /* public void setTemaEleres(String temaeleres) {
-     this.temaeleres = temaeleres;
-     }*/
-    /**
+   /**
      * Beállitja a játék nézetét.
      *
      * @param view beallitása
      */
-    public void setView(GameViewController view) {
-        this.view = view;
+    public void nezetBeallitasa(JatekNezetKontroller nezet) {
+        this.nezet = nezet;
     }
 
 }

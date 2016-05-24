@@ -14,25 +14,25 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package cr.memorygame;
+package cr.memorygame.model;
 
 /**
  *
- * A játék nehézsége. 
- * Különböző számú rossz tippet enged meg,
+ * A játékos által választható témákat tartalmazó felsorolás.
  */
-public enum Nehezseg {
+public enum Temak {
 
     /**
-     * 50 rossz tippet enged meg.
+     * Virágokat tartalmazó képek jelennek meg.
      */
-    Könnyű,
+    virag,
     /**
-     * 30 rossz tippet enged meg.
+     * Állatokat tartalmazó képek jelennek meg.
      */
-    Közepes,
+    allat,
     /**
-     * 20 rossz tippet enged meg.
+     * Gyümölcsöket tartalmazó képek jelennek meg.
      */
-    Nehéz
+    gyumolcs
+
 }

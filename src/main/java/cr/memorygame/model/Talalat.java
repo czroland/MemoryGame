@@ -14,7 +14,9 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package cr.memorygame;
+package cr.memorygame.model;
+
+import cr.memorygame.model.Jatek;
 
 /**
  *
@@ -44,6 +46,9 @@ public class Talalat {
      */
     public String getMasodikKep() {
         return masodikKep;
+    }
+     public void setMasodikKep(String masodikKep) {
+        this.masodikKep=masodikKep;
     }
 
     /**

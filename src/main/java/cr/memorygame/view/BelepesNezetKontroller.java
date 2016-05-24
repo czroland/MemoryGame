@@ -16,20 +16,15 @@
  */
 package cr.memorygame.view;
 
-import cr.memorygame.Nehezseg;
-import cr.memorygame.Temak;
-import cr.memorygame.Player;
+import cr.memorygame.model.Temak;
+import cr.memorygame.model.Nehezseg;
+
+import cr.memorygame.model.Jatekos;
 import cr.memorygame.KepEleres;
 import java.io.IOException;
-import java.net.URL;
-import java.util.ResourceBundle;
 import javafx.application.Platform;
-import static javafx.collections.FXCollections.observableArrayList;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
-import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
@@ -38,8 +33,7 @@ import javafx.scene.control.ToggleGroup;
 import javax.xml.parsers.ParserConfigurationException;
 import org.xml.sax.SAXException;
 
-
-public class LoginViewController extends ViewController {
+public class BelepesNezetKontroller extends NezetKontroller {
 
     @FXML
     private TextField name;
@@ -66,20 +60,23 @@ public class LoginViewController extends ViewController {
         if (name.getText().length() < 3) {
             nev_hiba.setText("Túl rövid név!");
         } else {
-            boolean foglalt_e = game.check(name.getText());
+            boolean foglalt_e = jatekkontr.check(name.getText());
             if (foglalt_e) {
                 nev_hiba.setText("A név foglalt!");
             } else {
                 Nehezseg nehezseg = Nehezseg.Közepes;
 
-                if (nehezsegtoggle.getSelectedToggle().equals(konnyu))
-                nehezseg = Nehezseg.Könnyű;
+                if (nehezsegtoggle.getSelectedToggle().equals(konnyu)) {
+                    nehezseg = Nehezseg.Könnyű;
+                }
 
-                if (nehezsegtoggle.getSelectedToggle().equals(kozepes))
-                nehezseg = Nehezseg.Közepes;
+                if (nehezsegtoggle.getSelectedToggle().equals(kozepes)) {
+                    nehezseg = Nehezseg.Közepes;
+                }
 
-                if (nehezsegtoggle.getSelectedToggle().equals(nehez))
-                nehezseg = Nehezseg.Nehéz;
+                if (nehezsegtoggle.getSelectedToggle().equals(nehez)) {
+                    nehezseg = Nehezseg.Nehéz;
+                }
 
                 Temak tema = Temak.allat;
                 if (valaszt.getValue().equals("Állat")) {
@@ -91,17 +88,16 @@ public class LoginViewController extends ViewController {
                 if (valaszt.getValue().equals("Virág")) {
                     tema = Temak.virag;
                 }
-                
 
-               // System.out.println(nehezseg);
-                Player player = new Player(name.getText(), nehezseg, tema);
-                KepEleres kep = new KepEleres("/img/"+valaszt.getValue().toString()+"/");
+                // System.out.println(nehezseg);
+                Jatekos jatekos = new Jatekos(name.getText(), nehezseg, tema);
+                KepEleres kep = new KepEleres("/img/" + valaszt.getValue().toString() + "/");
 
-                game.initializePlayer(player);
-                game.initializeKepeleres(kep);
-                                /**/
+                jatekkontr.jatekosInicializalas(jatekos);
+                jatekkontr.kepeleresInicializalasa(kep);
+                /**/
 
-                game.start();
+                jatekkontr.start();
                 //System.out.println(game.getPlayer().getName());
             }
 

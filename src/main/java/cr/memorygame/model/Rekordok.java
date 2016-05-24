@@ -16,7 +16,7 @@
  */
 package cr.memorygame.model;
 
-import java.util.Date;
+import java.util.Comparator;
 
 /**
  *
@@ -90,10 +90,21 @@ public class Rekordok {
     /**
      * Beállitja a játékos helytelen tippeinek számát.
      *
-     * @param helytelenTipp a helyestelen tippek száma
+     * @param helytelenTipp a helytelen tippek száma
      */
     public void setHelytelenTipp(int helytelenTipp) {
         this.helytelenTipp = helytelenTipp;
     }
+
+    public static Comparator<Rekordok> rendez = new Comparator<Rekordok>() {
+
+        public int compare(Rekordok t1, Rekordok t2) {
+
+            int rek1 = t1.getHelytelenTipp();
+            int rek2 = t2.getHelytelenTipp();
+
+            return rek1 - rek2;
+        }
+    };
 
 }

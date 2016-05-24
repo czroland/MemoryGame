@@ -3,8 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package cr.memorygame;
+package cr.memorygame.model;
 
+import cr.memorygame.KepEleres;
+import cr.memorygame.model.Talalat;
+import cr.memorygame.model.Jatek;
 import java.util.ArrayList;
 import java.util.List;
 import org.junit.Test;
@@ -52,8 +55,8 @@ public class JatekTest {
         assertEquals(lapok.get(1), talalat.elsoKep);
         assertEquals(null, talalat.masodikKep);
 
-        assertEquals(jatek.getCard(1), lapok.get(1));
-        assertEquals(jatek.getCard(1), talalat.getElsoKep());
+        assertEquals(jatek.getLapIndex(1), lapok.get(1));
+        assertEquals(jatek.getLapIndex(1), talalat.getElsoKep());
         assertEquals(null, talalat.getMasodikKep());
 
         assertEquals(false, talalat.helyesTalalat());

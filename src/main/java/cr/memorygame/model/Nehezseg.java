@@ -14,30 +14,25 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package cr.memorygame.view;
-
-import java.net.URL;
-import java.util.ResourceBundle;
-import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
-import cr.memorygame.GameController;
+package cr.memorygame.model;
 
 /**
- * Az FX kezelőfelület ablakai ebből az osztályból vannak származtatva.
+ *
+ * A játék nehézsége. 
+ * Különböző számú rossz tippet enged meg,
  */
-public class ViewController {
-
-    protected GameController game;
+public enum Nehezseg {
 
     /**
-     * Ez a metódus teszi lehetővé, hogy a kontrollerek kommunikáljanak
-     * egymással.
-     *
-     * @param game a GameController egy példánya.
+     * 50 rossz tippet enged meg.
      */
-    public void setGameController(GameController game) {
-        this.game = game;
-    }
-
+    Könnyű,
+    /**
+     * 30 rossz tippet enged meg.
+     */
+    Közepes,
+    /**
+     * 20 rossz tippet enged meg.
+     */
+    Nehéz
 }

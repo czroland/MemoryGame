@@ -14,15 +14,11 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package cr.memorygame;
+package cr.memorygame.model;
 
+import cr.memorygame.KepEleres;
 import static cr.memorygame.view.Main.logger;
-import java.io.File;
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.*;
 
 /**
@@ -39,8 +35,8 @@ public final class Jatek {
      * @param kep a választott témához tartozó képek elérési mappája.
      * @param parok_szama a játékban használt képek száma.
      */
-    public Jatek(KepEleres kep, int parok_szama) {
-        lapokLetrehozasa(kep, parok_szama);
+    public Jatek(KepEleres kep, int parokSzama) {
+        lapokLetrehozasa(kep, parokSzama);
     }
 
     /**
@@ -58,7 +54,7 @@ public final class Jatek {
      * @param kep a kiválasztott téma képeinek elérése
      * @param parok_szama képek száma
      */
-    public void lapokLetrehozasa(KepEleres kep, int parok_szama) {
+    public void lapokLetrehozasa(KepEleres kep, int parokSzama) {
         int parok = 0;
 
         for (int i = 1; i < 11; i++) {
@@ -68,7 +64,7 @@ public final class Jatek {
             lapok.add(kep.getEleres() + "/" + i + ".jpg");
             parok++;
 
-            if (parok == parok_szama) {
+            if (parok == parokSzama) {
                 break;
             }
 
@@ -113,7 +109,7 @@ public final class Jatek {
      * {@link cr.memorygame.view.GameViewController}-en kiválasztott kép indexe
      * @return az adott index-ű kép a lapok listából
      */
-    public String getCard(int index) {
+    public String getLapIndex(int index) {
         return lapok.get(index);
     }
 

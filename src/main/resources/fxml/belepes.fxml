@@ -15,7 +15,7 @@
 <?import java.util.*?>
 <?import javafx.collections.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="259.0" prefWidth="447.0" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cr.memorygame.view.LoginViewController">
+<AnchorPane id="AnchorPane" prefHeight="259.0" prefWidth="447.0" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cr.memorygame.view.BelepesNezetKontroller">
     <children>
         <Button fx:id="button" alignment="CENTER" layoutX="168.0" layoutY="219.0" onAction="#check" prefHeight="26.0" prefWidth="112.0" text="Start" textAlignment="CENTER" />
         <Label fx:id="label" layoutX="22.0" layoutY="62.0" minHeight="16" minWidth="69" text="Játékos neve:" />

@@ -16,9 +16,11 @@
  */
 package cr.memorygame;
 
+import cr.memorygame.model.RekordLista;
 import cr.memorygame.model.Rekordok;
 import cr.memorygame.model.XMLFeldolg;
-import cr.memorygame.view.GameViewController;
+import cr.memorygame.model.Jatekos;
+import cr.memorygame.view.JatekNezetKontroller;
 import cr.memorygame.view.Main;
 import static cr.memorygame.view.Main.logger;
 import java.io.BufferedWriter;
@@ -26,7 +28,6 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
-import javafx.scene.control.ListView;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.TransformerException;
 import org.xml.sax.SAXException;
@@ -34,12 +35,12 @@ import org.xml.sax.SAXException;
 /**
  * A fő kontroller osztály.
  */
-public class GameController {
+public class JatekKontroller {
 
-    private GameViewController view;
+    private JatekNezetKontroller nezet;
     private Main mainApp;
-    private Player player;
-    public KepEleres kep;
+    private Jatekos jatekos;
+    private KepEleres kep;
     private Rekordok rek;
     private XMLFeldolg feld;
 
@@ -49,7 +50,7 @@ public class GameController {
      *
      * @param mainApp hivatkozik a {@link cr.memorygame.view.Main} osztályra.
      */
-    public GameController(Main mainApp) {
+    public JatekKontroller(Main mainApp) {
         this.mainApp = mainApp;
     }
 
@@ -58,19 +59,19 @@ public class GameController {
      *
      * @return a player
      */
-    public Player getPlayer() {
-        return player;
+    public Jatekos getJatekos() {
+        return jatekos;
     }
 
     /**
      * Beállitja az elérési mappát.
      *
-     * @param kep a {@link cr.memorygame.Temak} -ból választottnak megfelelően
+     * @param kep a {@link cr.memorygame.model.Temak} -ból választottnak megfelelően
      * beállítja a mappát.
      */
-    public void initializeKepeleres(KepEleres kep) {
+    public void kepeleresInicializalasa(KepEleres kep) {
         this.kep = kep;
-        kep.setEleres("/img/" + player.getTema() + "/");
+        kep.setEleres("/img/" + jatekos.getTema() + "/");
     }
 
     /**
@@ -85,28 +86,29 @@ public class GameController {
     /**
      * Beállitja a játékost.
      *
-     * @param player a játék egy játékosa
+     * @param jatekos a játék egy játékosa
      */
-    public void initializePlayer(Player player) {
-        this.player = player;
+    public void jatekosInicializalas(Jatekos jatekos) {
+        this.jatekos = jatekos;
     }
 
     /**
      * Ellenőrzi, hogy a játékos által megadott név szerepel-e az adatbázisban.
      *
-     * @param name a játékos által megadott <code>name</code> név
+     * @param nev a játékos által megadott <code>nev</code> név
      * @return megfelelő-e a név, avagy nem
      * @throws IOException hiba a fájlelérés során
      * @throws ParserConfigurationException hiba a feldolgozás során
      * @throws SAXException hiba az adatbázisselérés során
      */
-    public boolean check(String name) throws IOException, ParserConfigurationException, SAXException {
-        logger.info(name + " név ellenőrzése");
-        createXMLFile();
+    public boolean check(String nev) throws IOException, ParserConfigurationException, SAXException {
+        logger.info(nev + " név ellenőrzése");
+        xmlFajlLetrehozasa();
 
-        ArrayList<String> names = new RekordLista().getNames();
 
-        if (names.contains(name)) {
+        ArrayList<String> nevek = new RekordLista().getNames();
+
+        if (nevek.contains(nevek)) {
             return true;
         } else {
             return false;
@@ -122,7 +124,7 @@ public class GameController {
      * @throws ParserConfigurationException hiba a feldolgozás során
      * @throws SAXException hiba az adatbázisselérés során
      */
-    public void createXMLFile() throws IOException, ParserConfigurationException, SAXException {
+    public void xmlFajlLetrehozasa() throws IOException, ParserConfigurationException, SAXException {
         String filepath = System.getProperty("user.home") + File.separator;
 
         File xmlfile = new File(filepath + "memorygame.xml");
@@ -162,12 +164,11 @@ public class GameController {
      * @throws SAXException hiba az adatbázisselérés során
      * @throws TransformerException formázási hiba
      */
-    public void XMLupdate(Rekordok rekk) throws ParserConfigurationException, IOException, SAXException, TransformerException {
+    public void XMLFrissitess(Rekordok rekk) throws ParserConfigurationException, IOException, SAXException, TransformerException {
 
         XMLFeldolg feld = new XMLFeldolg();
 
         feld.addNewData(rekk);
-        feld.listData();
     }
 
     /**
@@ -175,10 +176,12 @@ public class GameController {
      *
      * @param view referencia a view kontrollerre.
      */
-    public void setView(GameViewController view) {
+    public void nezetBeallitasa(JatekNezetKontroller nezet) {
         logger.info(" nézet beállítása");
 
-        this.view = view;
+        this.nezet = nezet;
+        
+
     }
 
     /**
